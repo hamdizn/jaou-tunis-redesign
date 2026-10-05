@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAOU TUNIS 2026 — Biennale d'Art Contemporain</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cinzel:wght@700;800;900&family=Space+Grotesk:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Modern Glass Header with Official Vector Jaou Logo -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-left">
+        <!-- Minimalist Burger Button -->
+        <button class="menu-btn" id="toggleMenuBtn" aria-label="Toggle Menu">
+          <div class="burger-icon">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+          </div>
+          
+          <span class="menu-text-wrap">
+            <span class="menu-text-inner">
+              <span class="text-line">Menu</span>
+              <span class="text-line">Menu</span>
+              <span class="text-line">Fermer</span>
+            </span>
+          </span>
+        </button>
+
+        <a href="#" class="calendar-btn">Calendar</a>
+      </div>
+
+      <a href="#" class="nav-brand">
+        <!-- Exact Jaou Vector Logo -->
+        <svg class="jaou-logo-svg" viewBox="0 0 710 500" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,80 C0,36 36,0 80,0 L230,0 L230,350 C230,432 163,500 80,500 C36,500 0,464 0,420 L0,340 L180,340 L180,320 L0,320 Z"/>
+          <path d="M460,0 L710,0 L710,80 C710,124 674,160 630,160 L460,160 Z"/>
+          <rect x="260" y="190" width="450" height="130"/>
+          <path d="M260,400 C260,356 296,320 340,320 L400,320 L400,500 L340,500 C296,500 260,464 260,420 Z"/>
+          <circle cx="490" cy="410" r="65"/>
+          <path d="M570,340 L570,430 C570,469 601,500 640,500 C679,500 710,469 710,430 L710,340 L650,340 L650,430 C650,436 645,440 630,430 L630,340 Z"/>
+        </svg>
+      </a>
+
+      <div class="nav-right">
+        <div class="lang-selector">
+          <a href="#" class="lang-item active">FR</a>
+          <span style="opacity: 0.3;">|</span>
+          <a href="#" class="lang-item">EN</a>
+          <span style="opacity: 0.3;">|</span>
+          <a href="#" class="lang-item" style="font-family: 'Amiri', serif;">عربي</a>
+        </div>
+        <a href="#" class="icon-link" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="#" class="icon-link" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Full-Screen Animated Menu Overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <!-- Full-Screen Ambient Molecular Background Canvas -->
+    <canvas id="moleculeCanvas" class="menu-bg-canvas"></canvas>
+
+    <div class="menu-list-container">
+      <ul class="menu-vertical-list">
+        
+        <!-- I ABOUT US -->
+        <li class="menu-list-item" 
+            data-num="I" 
+            data-title="ABOUT US" 
+            data-tag="KLF & FOUNDATION" 
+            data-icon="fa-solid fa-landmark" 
+            data-desc="Découvrez la Fondation Kamel Lazaar (KLF) et l'histoire de Jaou Tunis dans le développement des arts contemporains en Afrique du Nord."
+            data-gradient="linear-gradient(135deg, #14AFA7 0%, #0B6B66 100%)">
+          <div class="list-category-head">
+            <span class="list-num">I.</span>
+            <span class="list-title">ABOUT US</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">Jaou Tunis</a>
+            <a href="https://www.kamellazaarfoundation.org/" target="_blank">KLF</a>
+          </div>
+        </li>
+
+        <!-- II JAOU TUNIS'26 -->
+        <li class="menu-list-item" 
+            data-num="II" 
+            data-title="JAOU TUNIS'26" 
+            data-tag="BIENNALE ARCHIPEL" 
+            data-icon="fa-solid fa-compass-drafting" 
+            data-desc="Explorez la programmation générale : expositions, concerts live, performances artistiques et calendrier à travers la ville de Tunis."
+            data-gradient="linear-gradient(135deg, #14AFA7 0%, #064E3B 100%)">
+          <div class="list-category-head">
+            <span class="list-num">II.</span>
+            <span class="list-title">JAOU TUNIS'26</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">Archipelago Biennale</a>
+            <a href="#">Exhibitions</a>
+            <a href="#">Concerts</a>
+            <a href="#">Performances</a>
+            <a href="#">Calendar</a>
+          </div>
+        </li>
+
+        <!-- III BIM'26 -->
+        <li class="menu-list-item" 
+            data-num="III" 
+            data-title="BIM'26" 
+            data-tag="BECOMING THE OCEAN" 
+            data-icon="fa-solid fa-water" 
+            data-desc="La Biennale de l'Image en Mouvement présente 'Becoming the Ocean' avec 16 artistes internationaux à la Caserne El Attarine."
+            data-gradient="linear-gradient(135deg, #0284C7 0%, #0F172A 100%)">
+          <div class="list-category-head">
+            <span class="list-num">III.</span>
+            <span class="list-title">BIM'26</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">About BIM'26</a>
+            <a href="#">Becoming the Ocean</a>
+            <a href="#">Artists</a>
+            <a href="#">Venue</a>
+          </div>
+        </li>
+
+        <!-- IV ART EXPLORA FESTIVAL -->
+        <li class="menu-list-item" 
+            data-num="IV" 
+            data-title="ART EXPLORA FESTIVAL" 
+            data-tag="FESTIVAL MÉRIDIONAL" 
+            data-icon="fa-solid fa-ship" 
+            data-desc="Le bateau-musée d'Art Explora clôture sa tournée méditerranéenne à Tunis avec des expositions immersives et concerts."
+            data-gradient="linear-gradient(135deg, #EC4899 0%, #831843 100%)">
+          <div class="list-category-head">
+            <span class="list-num">IV.</span>
+            <span class="list-title">ART EXPLORA FESTIVAL</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">About the Festival</a>
+            <a href="#">Undertow / Contre;Courant</a>
+            <a href="#">Related Programme</a>
+          </div>
+        </li>
+
+        <!-- V PARTNERS -->
+        <li class="menu-list-item" 
+            data-num="V" 
+            data-title="PARTNERS" 
+            data-tag="RÉSEAU INTERNATIONAL" 
+            data-icon="fa-solid fa-handshake" 
+            data-desc="Partenariats majeurs avec le Centre d'Art Contemporain Genève, la Fondation Art Explora et nos mécènes institutionnels."
+            data-gradient="linear-gradient(135deg, #10B981 0%, #064E3B 100%)">
+          <div class="list-category-head">
+            <span class="list-num">V.</span>
+            <span class="list-title">PARTNERS</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">Centre d'Art Contemporain Genève</a>
+            <a href="#">Art Explora</a>
+            <a href="#">Sponsors</a>
+          </div>
+        </li>
+
+        <!-- VI MEDIA -->
+        <li class="menu-list-item" 
+            data-num="VI" 
+            data-title="MEDIA" 
+            data-tag="PRESSE & REVIEWS" 
+            data-icon="fa-solid fa-newspaper" 
+            data-desc="Téléchargez le dossier de presse officiel, consultez les retombées médias internationales et les répertoires photos."
+            data-gradient="linear-gradient(135deg, #8B5CF6 0%, #4C1D95 100%)">
+          <div class="list-category-head">
+            <span class="list-num">VI.</span>
+            <span class="list-title">MEDIA</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">Press Kit</a>
+            <a href="#">They Talked About Us</a>
+          </div>
+        </li>
+
+        <!-- VII PRACTICAL INFORMATION -->
+        <li class="menu-list-item" 
+            data-num="VII" 
+            data-title="PRACTICAL INFORMATION" 
+            data-tag="GUIDE DU VISITEUR" 
+            data-icon="fa-solid fa-map-location-dot" 
+            data-desc="Cartographie interactive de la Médina, accès aux lieux d'exposition, horaires, transports et FAQ."
+            data-gradient="linear-gradient(135deg, #F59E0B 0%, #78350F 100%)">
+          <div class="list-category-head">
+            <span class="list-num">VII.</span>
+            <span class="list-title">PRACTICAL INFORMATION</span>
+          </div>
+          <div class="list-sub-options">
+            <a href="#">Map</a>
+            <a href="#">FAQs</a>
+            <a href="#">Search</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <main>
+    <!-- FULL-SCREEN HERO IMAGE SECTION (100% Full Width & Viewport Height) -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <img src="hero-poster-exact.webp" alt="Jaou Tunis Official Poster Visual" />
+      </div>
+    </section>
+
+    <!-- Edito Paragraph Section -->
+    <section id="edito" class="edito-section">
+      <div class="edito-body">
+        <p class="reveal-on-scroll">This October, one of the world's leading biennials of the moving image crosses the Mediterranean.</p>
+        
+        <p class="reveal-on-scroll reveal-delay-1">For the first time in its history, the Biennale de l'Image en Mouvement leaves Geneva and arrives in Tunis, marking its first presentation on the African continent. At the same time, Art Explora's Mediterranean festival completes its journey by choosing Tunis as its final destination.</p>
+
+        <p class="reveal-on-scroll reveal-delay-2">Organised by the <a href="https://www.kamellazaarfoundation.org/" target="_blank">Kamel Lazaar Foundation</a>, in partnership with the <a href="https://centre.ch/fr" target="_blank">Centre d'Art Contemporain Genève</a> and the <a href="https://www.artexplora.org/" target="_blank">Art Explora Foundation</a>, the eighth edition of Jaou Tunis unfolds across exhibitions, performances, concerts, conversations and public programmes that bring artists, writers, musicians and audiences together over the course of a month.<br>At its centre is <strong>Becoming the Ocean</strong>, a major exhibition of BIM’26, bringing together sixteen newly commissioned artists from Africa, the Arab world, Asia, Latin America and their diasporas.</p>
+
+        <p class="reveal-on-scroll">Inspired by Khalil Gibran's image of a river that mistakes transformation for disappearance, the exhibition reflects on a world where inherited structures are increasingly unable to respond to the crises they have produced. Rather than asking how to preserve a world already slipping away, Becoming the Ocean asks what new forms of relation, memory and solidarity become possible when we recognise that survival depends not on separation, but on interdependence.</p>
+
+        <p class="reveal-on-scroll reveal-delay-1">Presented within the nineteenth-century Caserne El Attarine in the Medina of Tunis, the exhibition is accompanied by collateral exhibitions, performances, concerts, Jaou Nights, workshops, a symposium and city-wide encounters that invite visitors to experience Tunis through art, conversation and hospitality.</p>
+      </div>
+    </section>
+
+    <!-- Join Us In Tunis Section -->
+    <section class="join-section">
+      <div class="join-card reveal-on-scroll">
+        <div class="join-text">
+          <div class="pixel-tag"><span class="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
+          <h2>JOIN US IN TUNIS ✦</h2>
+          <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend of Jaou, we would be delighted to welcome you.</p>
+        </div>
+        <a href="mailto:visit@jaou.tn" class="join-btn">
+          REGISTER YOUR INTEREST <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Save The Date Video Player Frame -->
+      <div class="video-frame reveal-zoom">
+        <video controls playsinline poster="hero-poster-exact.webp">
+          <source src="/videos/save-the-date-jaou-tunis.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture de vidéo.
+        </video>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section reveal-on-scroll">
+      <div class="newsletter-card">
+        <div class="newsletter-header">
+          <div class="pixel-tag"><span class="pixel-dot-accent"></span> [ 02 // NETWORK & NEWSLETTER ]</div>
+          <h2 class="newsletter-title">JOIN OUR ARTIST NETWORK ✦</h2>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Merci pour votre inscription !');">
+          <div class="form-grid">
+            <div class="input-group">
+              <label class="input-label-pixel">// FIRST NAME</label>
+              <input type="text" class="input-modern" placeholder="e.g. Maya" required />
+            </div>
+            <div class="input-group">
+              <label class="input-label-pixel">// LAST NAME</label>
+              <input type="text" class="input-modern" placeholder="e.g. Ben Saïd" required />
+            </div>
+          </div>
+
+          <div class="input-group" style="margin-bottom: 3rem;">
+            <label class="input-label-pixel">// EMAIL ADDRESS</label>
+            <input type="email" class="input-modern" placeholder="artist@domain.com" required />
+          </div>
+
+          <button type="submit" class="subscribe-btn">
+            SUBSCRIBE <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="partner-grid">
+        <div class="partner-group reveal-on-scroll">
+          <span class="partner-label">Organised by</span>
+          <div class="partner-logo-item">
+            <i class="fa-solid fa-landmark"></i> Kamel Lazaar Foundation
+          </div>
+        </div>
+
+        <div class="partner-group reveal-on-scroll reveal-delay-1">
+          <span class="partner-label">In partnership with</span>
+          <div style="display: flex; gap: 2rem;">
+            <div class="partner-logo-item">
+              <i class="fa-solid fa-building-columns"></i> Centre d'Art Contemporain Genève
+            </div>
+            <div class="partner-logo-item">
+              <i class="fa-solid fa-ship"></i> Art Explora
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© KLF - 2026</div>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a> |
+          <a href="http://lisa-digit.com" target="_blank">Powered by LiSa Digit</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
