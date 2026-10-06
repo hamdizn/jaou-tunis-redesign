@@ -39,29 +39,6 @@ header {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-}
-
-/* When Menu is Open: Header Background transforms into Brand Teal (#14AFA7) */
-header.header-menu-open {
-  background: var(--jaou-teal) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-
-header.header-menu-open .menu-btn,
-header.header-menu-open .calendar-btn,
-header.header-menu-open .lang-item,
-header.header-menu-open .icon-link,
-header.header-menu-open .text-line {
-  color: var(--jaou-white) !important;
-}
-
-header.header-menu-open .jaou-logo-svg {
-  fill: var(--jaou-white) !important;
-}
-
-header.header-menu-open .burger-bar {
-  background-color: var(--jaou-white) !important;
 }
 
 .navbar {

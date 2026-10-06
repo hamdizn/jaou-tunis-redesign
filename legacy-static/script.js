@@ -1,14 +1,11 @@
-const header = document.querySelector('header');
-const toggleMenuBtn = document.querySelector('.menu-btn');
-const menuOverlay = document.querySelector('.menu-overlay');
+// Creative Full-Screen Animated Menu Interaction
+const toggleMenuBtn = document.getElementById('toggleMenuBtn');
+const menuOverlay = document.getElementById('menuOverlay');
 
-if (toggleMenuBtn && menuOverlay) {
-  toggleMenuBtn.addEventListener('click', () => {
-    const isOpen = menuOverlay.classList.toggle('open');
-    toggleMenuBtn.classList.toggle('active', isOpen);
-    if (header) header.classList.toggle('header-menu-open', isOpen);
-  });
-}
+toggleMenuBtn.addEventListener('click', () => {
+  const isOpen = menuOverlay.classList.toggle('open');
+  toggleMenuBtn.classList.toggle('active', isOpen);
+});
 
 const menuListItems = document.querySelectorAll('.menu-list-item');
 menuListItems.forEach(item => {
