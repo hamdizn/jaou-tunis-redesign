@@ -17,6 +17,7 @@ menuListItems.forEach(item => {
     link.addEventListener('click', () => {
       menuOverlay.classList.remove('open');
       toggleMenuBtn.classList.remove('active');
+      if (header) header.classList.remove('header-menu-open');
     });
   });
 });
@@ -25,6 +26,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
     menuOverlay.classList.remove('open');
     toggleMenuBtn.classList.remove('active');
+    if (header) header.classList.remove('header-menu-open');
   }
 });
 

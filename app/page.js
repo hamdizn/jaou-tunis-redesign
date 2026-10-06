@@ -16,9 +16,10 @@ export default function Home() {
         <section className="hero-section">
           <div className="hero-container">
             <img 
-              src="/hero-poster-exact.webp" 
+              src="/hero-poster-exact.png" 
               alt="Jaou Tunis Official Poster Visual" 
             />
+            <div className="hero-bottom-fade"></div>
           </div>
         </section>
 
@@ -48,59 +49,69 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Join Us In Tunis Section */}
-        <section className="join-section">
-          <div className="join-card reveal-on-scroll">
-            <div className="join-text">
-              <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
-              <h2>JOIN US IN TUNIS ✦</h2>
-              <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend of Jaou, we would be delighted to welcome you.</p>
+        {/* Join Us In Tunis Section (White-to-Teal Gradient Band) */}
+        <section className="join-section-wrapper">
+          <div className="join-section">
+            <div className="join-card reveal-on-scroll">
+              <div className="join-text">
+                <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
+                <h2>JOIN US IN TUNIS ✦</h2>
+                <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend of Jaou, we would be delighted to welcome you.</p>
+              </div>
+              <a href="mailto:visit@jaou.tn" className="join-btn">
+                REGISTER YOUR INTEREST <i className="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
-            <a href="mailto:visit@jaou.tn" className="join-btn">
-              REGISTER YOUR INTEREST <i className="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
 
-          {/* Save The Date Video Player Frame */}
-          <div className="video-frame reveal-zoom">
-            <video controls playsInline poster="/hero-poster-exact.webp">
-              <source src="/videos/save-the-date-jaou-tunis.mp4" type="video/mp4" />
-              Votre navigateur ne prend pas en charge la lecture de vidéo.
-            </video>
+            {/* Save The Date Video Player Frame */}
+            <div className="video-frame reveal-zoom">
+              <video controls playsInline poster="/hero-poster-exact.png">
+                <source src="/videos/save-the-date-jaou-tunis.mp4" type="video/mp4" />
+                Votre navigateur ne prend pas en charge la lecture de vidéo.
+              </video>
+            </div>
           </div>
         </section>
 
-        {/* Newsletter Section */}
-        <section className="newsletter-section reveal-on-scroll">
-          <div className="newsletter-card">
-            <div className="newsletter-header">
-              <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 02 // NETWORK & NEWSLETTER ]</div>
-              <h2 className="newsletter-title">JOIN OUR ARTIST NETWORK ✦</h2>
+        {/* Smooth Teal-to-Yellow Transition Strictly Below Video */}
+        <div className="teal-to-yellow-fade"></div>
+
+        {/* Newsletter Section (100% Solid Jaou Yellow #FEF8D6) */}
+        <section className="newsletter-section-wrapper">
+          <div className="newsletter-section reveal-on-scroll">
+            <div className="newsletter-card">
+              <div className="newsletter-header">
+                <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 02 // NETWORK & NEWSLETTER ]</div>
+                <h2 className="newsletter-title">JOIN OUR ARTIST NETWORK ✦</h2>
+              </div>
+
+              <form onSubmit={handleNewsletterSubmit}>
+                <div className="form-grid">
+                  <div className="input-group">
+                    <label className="input-label-pixel">// FIRST NAME</label>
+                    <input type="text" className="input-modern" placeholder="e.g. Maya" required />
+                  </div>
+                  <div className="input-group">
+                    <label className="input-label-pixel">// LAST NAME</label>
+                    <input type="text" className="input-modern" placeholder="e.g. Ben Saïd" required />
+                  </div>
+                </div>
+
+                <div className="input-group" style={{ marginBottom: '3rem' }}>
+                  <label className="input-label-pixel">// EMAIL ADDRESS</label>
+                  <input type="email" className="input-modern" placeholder="artist@domain.com" required />
+                </div>
+
+                <button type="submit" className="subscribe-btn">
+                  SUBSCRIBE <i className="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
             </div>
-
-            <form onSubmit={handleNewsletterSubmit}>
-              <div className="form-grid">
-                <div className="input-group">
-                  <label className="input-label-pixel">// FIRST NAME</label>
-                  <input type="text" className="input-modern" placeholder="e.g. Maya" required />
-                </div>
-                <div className="input-group">
-                  <label className="input-label-pixel">// LAST NAME</label>
-                  <input type="text" className="input-modern" placeholder="e.g. Ben Saïd" required />
-                </div>
-              </div>
-
-              <div className="input-group" style={{ marginBottom: '3rem' }}>
-                <label className="input-label-pixel">// EMAIL ADDRESS</label>
-                <input type="email" className="input-modern" placeholder="artist@domain.com" required />
-              </div>
-
-              <button type="submit" className="subscribe-btn">
-                SUBSCRIBE <i className="fa-solid fa-paper-plane"></i>
-              </button>
-            </form>
           </div>
         </section>
+
+        {/* Smooth Yellow-to-White Transition Below Newsletter */}
+        <div className="yellow-to-white-fade"></div>
       </main>
     </ScrollReveal>
   );
