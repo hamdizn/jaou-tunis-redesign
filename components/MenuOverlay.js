@@ -23,8 +23,8 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">ABOUT US</span>
             </div>
             <div className="list-sub-options">
-              <Link href="/#edito" onClick={handleLinkClick}>Jaou Tunis</Link>
-              <a href="https://www.kamellazaarfoundation.org/" target="_blank" rel="noopener noreferrer">KLF</a>
+              <Link href="/#edito" onClick={handleLinkClick}>&#123; Jaou Tunis &#125;</Link>
+              <a href="https://www.kamellazaarfoundation.org/" target="_blank" rel="noopener noreferrer">&#123; KLF &#125;</a>
             </div>
           </li>
 
@@ -35,11 +35,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">JAOU TUNIS'26</span>
             </div>
             <div className="list-sub-options">
-              <Link href="/calendar" onClick={handleLinkClick}>Archipelago Biennale</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Exhibitions</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Concerts</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Performances</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Calendar</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Archipelago Biennale &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Exhibitions &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Concerts &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Performances &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Calendar &#125;</Link>
             </div>
           </li>
 
@@ -50,10 +50,10 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">BIM'26</span>
             </div>
             <div className="list-sub-options">
-              <Link href="/calendar" onClick={handleLinkClick}>About BIM'26</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Becoming the Ocean</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Artists</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Venue</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; About BIM'26 &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Becoming the Ocean &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Artists &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Venue &#125;</Link>
             </div>
           </li>
 
@@ -64,9 +64,9 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">ART EXPLORA FESTIVAL</span>
             </div>
             <div className="list-sub-options">
-              <Link href="/calendar" onClick={handleLinkClick}>About the Festival</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Undertow / Contre;Courant</Link>
-              <Link href="/calendar" onClick={handleLinkClick}>Related Programme</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; About the Festival &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Undertow / Contre;Courant &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Related Programme &#125;</Link>
             </div>
           </li>
 
@@ -77,8 +77,8 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">PARTNERS</span>
             </div>
             <div className="list-sub-options">
-              <a href="https://centre.ch/fr" target="_blank" rel="noopener noreferrer">Centre d'Art Contemporain Genève</a>
-              <a href="https://www.artexplora.org/" target="_blank" rel="noopener noreferrer">Art Explora</a>
+              <a href="https://centre.ch/fr" target="_blank" rel="noopener noreferrer">&#123; Centre d'Art Contemporain Genève &#125;</a>
+              <a href="https://www.artexplora.org/" target="_blank" rel="noopener noreferrer">&#123; Art Explora &#125;</a>
             </div>
           </li>
 
@@ -89,8 +89,8 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">MEDIA</span>
             </div>
             <div className="list-sub-options">
-              <a href="#">Press Kit</a>
-              <a href="#">They Talked About Us</a>
+              <a href="#">&#123; Press Kit &#125;</a>
+              <a href="#">&#123; They Talked About Us &#125;</a>
             </div>
           </li>
 
@@ -101,9 +101,9 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               <span className="list-title">PRACTICAL INFORMATION</span>
             </div>
             <div className="list-sub-options">
-              <a href="#">Map</a>
-              <a href="#">FAQs</a>
-              <a href="#">Search</a>
+              <a href="#">&#123; Map &#125;</a>
+              <a href="#">&#123; FAQs &#125;</a>
+              <a href="#">&#123; Search &#125;</a>
             </div>
           </li>
         </ul>

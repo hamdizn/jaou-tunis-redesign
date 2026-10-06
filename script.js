@@ -10,6 +10,15 @@ if (toggleMenuBtn && menuOverlay) {
   });
 }
 
+const logoHomeLinks = document.querySelectorAll('.nav-brand, .icon-link[aria-label="Home"]');
+logoHomeLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (menuOverlay) menuOverlay.classList.remove('open');
+    if (toggleMenuBtn) toggleMenuBtn.classList.remove('active');
+    if (header) header.classList.remove('header-menu-open');
+  });
+});
+
 const menuListItems = document.querySelectorAll('.menu-list-item');
 menuListItems.forEach(item => {
   const subLinks = item.querySelectorAll('.list-sub-options a');

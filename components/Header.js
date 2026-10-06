@@ -29,11 +29,12 @@ export default function Header({ menuOpen, setMenuOpen }) {
           </button>
 
           <Link href="/calendar" className="calendar-btn">
-            Calendar
+            <i className="fa-regular fa-calendar-days"></i>
+            <span>Calendar</span>
           </Link>
         </div>
 
-        <Link href="/" className="nav-brand" aria-label="Jaou Tunis Home">
+        <Link href="/" className="nav-brand" aria-label="Jaou Tunis Home" onClick={() => setMenuOpen(false)}>
           <img src="/jaou-logo.png" alt="Jaou Tunis" className="jaou-logo-img" />
         </Link>
 
@@ -45,7 +46,7 @@ export default function Header({ menuOpen, setMenuOpen }) {
             <span style={{ opacity: 0.3 }}>|</span>
             <a href="#" className="lang-item" style={{ fontFamily: 'Amiri, serif' }}>عربي</a>
           </div>
-          <Link href="/" className="icon-link" aria-label="Home"><i className="fa-solid fa-house"></i></Link>
+          <Link href="/" className="icon-link" aria-label="Home" onClick={() => setMenuOpen(false)}><i className="fa-solid fa-house"></i></Link>
           <a href="#" className="icon-link" aria-label="User Account"><i className="fa-regular fa-user"></i></a>
         </div>
       </nav>
