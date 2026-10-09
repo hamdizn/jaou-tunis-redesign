@@ -32,7 +32,7 @@ export default function Header({ menuOpen, setMenuOpen }) {
             </span>
           </button>
 
-          <Link href="/calendar" className="calendar-btn">
+          <Link href="/calendar" className="calendar-btn" onClick={() => setMenuOpen(false)}>
             <i className="fa-regular fa-calendar-days"></i>
             <span>Calendar</span>
           </Link>

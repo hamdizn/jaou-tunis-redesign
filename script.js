@@ -10,7 +10,7 @@ if (toggleMenuBtn && menuOverlay) {
   });
 }
 
-const logoHomeLinks = document.querySelectorAll('.nav-brand, .icon-link[aria-label="Home"]');
+const logoHomeLinks = document.querySelectorAll('.nav-brand, .icon-link[aria-label="Home"], .calendar-btn');
 logoHomeLinks.forEach(link => {
   link.addEventListener('click', () => {
     if (menuOverlay) menuOverlay.classList.remove('open');
