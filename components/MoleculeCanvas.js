@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function MoleculeCanvas() {
+export default function MoleculeCanvas({ className = 'agenda-bg-canvas' }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -10,9 +10,10 @@ export default function MoleculeCanvas() {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
+    let animationFrameId;
     let particles = [];
     let mouse = { x: -1000, y: -1000, isOver: false };
-    let animationFrameId;
+    let speedMultiplier = 1;
 
     function resizeCanvas() {
       const displayW = window.innerWidth;
@@ -28,9 +29,9 @@ export default function MoleculeCanvas() {
     function initParticles(w, h) {
       particles = [];
       const count = Math.min(95, Math.max(50, Math.floor((w * h) / 11000)));
-      // Brand palette: Jaou Teal (#14AFA7), Jaou Black (#000000), Deep Teal (#0D9488), Muted Slate (#475569), Ochre Gold (#B45309)
+      // Brand palette colors: Jaou Teal (#14AFA7), Jaou Black (#000000), Deep Teal (#0D9488), Muted Slate (#475569), Ochre Gold (#B45309)
       const colors = ['#14AFA7', '#000000', '#0D9488', '#475569', '#B45309'];
-      
+
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * w,
@@ -69,10 +70,10 @@ export default function MoleculeCanvas() {
         }
       }
 
-      // Update and draw particles
+      // Draw and update particles
       particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x += p.vx * speedMultiplier;
+        p.y += p.vy * speedMultiplier;
 
         if (p.x < 0) p.x = displayW;
         if (p.x > displayW) p.x = 0;
@@ -114,7 +115,6 @@ export default function MoleculeCanvas() {
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
-
     resizeCanvas();
     drawMolecules();
 
@@ -126,5 +126,5 @@ export default function MoleculeCanvas() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} id="moleculeCanvas" className="menu-bg-canvas" />;
+  return <canvas ref={canvasRef} className={className} />;
 }

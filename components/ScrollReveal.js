@@ -13,13 +13,19 @@ export default function ScrollReveal({ children }) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          entry.target.classList.remove('exit-left');
         } else {
           entry.target.classList.remove('is-visible');
+          if (entry.boundingClientRect.top < 0) {
+            entry.target.classList.add('exit-left');
+          } else {
+            entry.target.classList.remove('exit-left');
+          }
         }
       });
     }, scrollObserverOptions);
 
-    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-zoom');
+    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-right, .video-frame, .reveal-form-card');
     elements.forEach(el => scrollObserver.observe(el));
 
     return () => {

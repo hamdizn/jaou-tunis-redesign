@@ -1,10 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header({ menuOpen, setMenuOpen }) {
+  const pathname = usePathname();
+  const isCalendarPage = pathname === '/calendar';
+
   return (
-    <header className={menuOpen ? 'header-menu-open' : ''}>
+    <header className={`${menuOpen ? 'header-menu-open' : ''} ${isCalendarPage ? 'header-yellow' : ''}`}>
       <nav className="navbar">
         <div className="nav-left">
           {/* Minimalist Burger Button with Kinetic Text Roll */}

@@ -1,24 +1,79 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Home() {
+  const [showHeroVideo, setShowHeroVideo] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [registerSubmitted, setRegisterSubmitted] = useState(false);
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const videoRef = useRef(null);
+
+  const playVideoCycle = () => {
+    setShowHeroVideo(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    // Initial 5-second wait on photo before starting video
+    const timer = setTimeout(() => {
+      playVideoCycle();
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleVideoEnded = () => {
+    // When video ends: return to photo for 5 seconds, then play video again
+    setShowHeroVideo(false);
+    setTimeout(() => {
+      playVideoCycle();
+    }, 5000);
+  };
+
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    setRegisterSubmitted(true);
+    setTimeout(() => {
+      setRegisterSubmitted(false);
+      setIsRegisterModalOpen(false);
+    }, 2800);
+  };
+
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
-    alert('Merci pour votre inscription à la newsletter Jaou Tunis !');
+    setNewsletterSubmitted(true);
+    setTimeout(() => {
+      setNewsletterSubmitted(false);
+    }, 4500);
   };
 
   return (
     <ScrollReveal>
       <main>
-        {/* FULL-SCREEN HERO IMAGE SECTION */}
+        {/* FULL-SCREEN HERO IMAGE & VIDEO CYCLE SECTION */}
         <section className="hero-section">
           <div className="hero-container">
             <img 
               src="/hero-poster-exact.png" 
               alt="Jaou Tunis Official Poster Visual" 
+              className={`hero-img ${showHeroVideo ? 'fade-out' : ''}`}
             />
+            
+            <video 
+              ref={videoRef}
+              src="/save-the-date-jaou-tunis.mp4" 
+              className={`hero-video ${showHeroVideo ? 'fade-in' : ''}`}
+              muted
+              playsInline
+              onEnded={handleVideoEnded}
+            />
+
             <div className="hero-bottom-fade"></div>
           </div>
         </section>
@@ -46,29 +101,49 @@ export default function Home() {
             <p className="reveal-on-scroll reveal-delay-1">
               Presented within the nineteenth-century Caserne El Attarine in the Medina of Tunis, the exhibition is accompanied by collateral exhibitions, performances, concerts, Jaou Nights, workshops, a symposium and city-wide encounters that invite visitors to experience Tunis through art, conversation and hospitality.
             </p>
+
+            {/* INTERACTIVE QUOTE SPOTLIGHT CARD (2D Scroll Slide-in, 3D Flip on Hover Only) */}
+            <div className="quote-card-wrapper reveal-slide-right">
+              <div className="quote-card-container">
+                <div className="quote-flip-card">
+                  <div className="quote-card-front">
+                    <img src="/watermelon-boy.png" alt="An Exploration of Resistance as the Deepest Form of Love" />
+                  </div>
+                  <div className="quote-card-back">
+                    <h3>AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Join Us In Tunis Section (White-to-Teal Gradient Band) */}
         <section className="join-section-wrapper">
           <div className="join-section">
-            <div className="join-card reveal-on-scroll">
+            <div className="join-card reveal-form-card">
               <div className="join-text">
                 <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
                 <h2>JOIN US IN TUNIS ✦</h2>
                 <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend of Jaou, we would be delighted to welcome you.</p>
               </div>
-              <a href="mailto:visit@jaou.tn" className="join-btn">
+              <button onClick={() => setIsRegisterModalOpen(true)} className="join-btn">
                 REGISTER YOUR INTEREST <i className="fa-solid fa-arrow-right"></i>
-              </a>
+              </button>
             </div>
 
             {/* Save The Date Video Player Frame */}
-            <div className="video-frame reveal-zoom">
-              <video controls playsInline poster="/hero-poster-exact.png">
-                <source src="/videos/save-the-date-jaou-tunis.mp4" type="video/mp4" />
-                Votre navigateur ne prend pas en charge la lecture de vidéo.
-              </video>
+            <div className="video-frame-wrapper">
+              <div className="video-frame">
+                <div className="video-frame-badge">
+                  <span className="badge-dot"></span>
+                  <span>SAVE THE DATE // JAOU TUNIS 2026</span>
+                </div>
+                <video controls playsInline poster="/hero-poster-exact.png">
+                  <source src="/save-the-date-jaou-tunis.mp4" type="video/mp4" />
+                  Votre navigateur ne prend pas en charge la lecture de vidéo.
+                </video>
+              </div>
             </div>
           </div>
         </section>
@@ -78,8 +153,8 @@ export default function Home() {
 
         {/* Newsletter Section (100% Solid Jaou Yellow #FEF8D6) */}
         <section className="newsletter-section-wrapper">
-          <div className="newsletter-section reveal-on-scroll">
-            <div className="newsletter-card">
+          <div className="newsletter-section">
+            <div className="newsletter-card reveal-form-card">
               <div className="newsletter-header">
                 <div className="pixel-tag"><span className="pixel-dot-accent"></span> [ 02 // NETWORK & NEWSLETTER ]</div>
                 <h2 className="newsletter-title">JOIN OUR ARTIST NETWORK ✦</h2>
@@ -97,7 +172,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="input-group" style={{ marginBottom: '3rem' }}>
+                <div className="input-group" style={{ marginBottom: '2.5rem' }}>
                   <label className="input-label-pixel">// EMAIL ADDRESS</label>
                   <input type="email" className="input-modern" placeholder="artist@domain.com" required />
                 </div>
@@ -105,6 +180,13 @@ export default function Home() {
                 <button type="submit" className="subscribe-btn">
                   SUBSCRIBE <i className="fa-solid fa-paper-plane"></i>
                 </button>
+
+                {newsletterSubmitted && (
+                  <div className="form-success-toast">
+                    <span className="check-icon"><i className="fa-solid fa-check"></i></span>
+                    <span>✦ Inscription réussie ! Bienvenue dans le réseau Jaou Tunis 2026.</span>
+                  </div>
+                )}
               </form>
             </div>
           </div>
@@ -112,6 +194,63 @@ export default function Home() {
 
         {/* Smooth Yellow-to-White Transition Below Newsletter */}
         <div className="yellow-to-white-fade"></div>
+
+        {/* FORM 1: PRE-REGISTRATION / INTEREST MODAL FORM */}
+        <div className={`modal-overlay ${isRegisterModalOpen ? 'open' : ''}`} onClick={(e) => e.target.classList.contains('modal-overlay') && setIsRegisterModalOpen(false)}>
+          <div className="modal-card">
+            <button className="modal-close-btn" onClick={() => setIsRegisterModalOpen(false)} aria-label="Close">
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+
+            <div className="pixel-tag" style={{ marginBottom: '0.8rem' }}>
+              <span className="pixel-dot-accent"></span> [ FORM 01 // PRE-REGISTRATION ]
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 900, marginBottom: '1.5rem', color: 'var(--jaou-black)' }}>
+              JOIN US IN TUNIS ✦
+            </h2>
+
+            <form onSubmit={handleRegisterSubmit}>
+              <div className="form-grid">
+                <div className="input-group">
+                  <label className="input-label-pixel">// FULL NAME</label>
+                  <input type="text" className="input-modern" placeholder="e.g. Salma Trabelsi" required />
+                </div>
+                <div className="input-group">
+                  <label className="input-label-pixel">// EMAIL ADDRESS</label>
+                  <input type="email" className="input-modern" placeholder="salma@domain.com" required />
+                </div>
+              </div>
+
+              <div className="form-grid" style={{ marginBottom: '2rem' }}>
+                <div className="input-group">
+                  <label className="input-label-pixel">// CATEGORY / ROLE</label>
+                  <select className="select-modern" required>
+                    <option value="">Select category...</option>
+                    <option value="artist">Artist / Practitioner</option>
+                    <option value="curator">Curator / Collector</option>
+                    <option value="journalist">Journalist / Press</option>
+                    <option value="visitor">Visitor / Friend of Jaou</option>
+                  </select>
+                </div>
+                <div className="input-group">
+                  <label className="input-label-pixel">// CITY / COUNTRY</label>
+                  <input type="text" className="input-modern" placeholder="e.g. Tunis, Tunisia" required />
+                </div>
+              </div>
+
+              <button type="submit" className="subscribe-btn" style={{ width: '100%', justifyContent: 'center' }}>
+                SUBMIT PRE-REGISTRATION <i className="fa-solid fa-paper-plane"></i>
+              </button>
+
+              {registerSubmitted && (
+                <div className="form-success-toast">
+                  <span className="check-icon"><i className="fa-solid fa-check"></i></span>
+                  <span>✦ Pré-inscription enregistrée ! Nous vous contacterons très prochainement.</span>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
       </main>
     </ScrollReveal>
   );
