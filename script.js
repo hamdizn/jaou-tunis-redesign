@@ -43,11 +43,11 @@ if (heroImg && heroVideo) {
 
 const menuListItems = document.querySelectorAll('.menu-list-item');
 menuListItems.forEach(item => {
-  const subLinks = item.querySelectorAll('.list-sub-options a');
-  subLinks.forEach(link => {
+  const links = item.querySelectorAll('.list-sub-options a, a.list-category-head');
+  links.forEach(link => {
     link.addEventListener('click', () => {
-      menuOverlay.classList.remove('open');
-      toggleMenuBtn.classList.remove('active');
+      if (menuOverlay) menuOverlay.classList.remove('open');
+      if (toggleMenuBtn) toggleMenuBtn.classList.remove('active');
       if (header) header.classList.remove('header-menu-open');
     });
   });

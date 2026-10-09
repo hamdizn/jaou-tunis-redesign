@@ -463,6 +463,9 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.25rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .list-num {

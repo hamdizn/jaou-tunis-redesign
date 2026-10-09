@@ -18,10 +18,10 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
           
           {/* I ABOUT US */}
           <li className="menu-list-item">
-            <div className="list-category-head">
+            <Link href="/#edito" onClick={handleLinkClick} className="list-category-head">
               <span className="list-num">I.</span>
               <span className="list-title">ABOUT US</span>
-            </div>
+            </Link>
             <div className="list-sub-options">
               <Link href="/#edito" onClick={handleLinkClick}>&#123; Jaou Tunis &#125;</Link>
               <a href="https://www.kamellazaarfoundation.org/" target="_blank" rel="noopener noreferrer">&#123; KLF &#125;</a>
@@ -30,10 +30,10 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
 
           {/* II JAOU TUNIS'26 */}
           <li className="menu-list-item">
-            <div className="list-category-head">
+            <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
               <span className="list-num">II.</span>
               <span className="list-title">JAOU TUNIS'26</span>
-            </div>
+            </Link>
             <div className="list-sub-options">
               <Link href="/calendar" onClick={handleLinkClick}>&#123; Archipelago Biennale &#125;</Link>
               <Link href="/calendar" onClick={handleLinkClick}>&#123; Exhibitions &#125;</Link>
@@ -45,10 +45,10 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
 
           {/* III BIM'26 */}
           <li className="menu-list-item">
-            <div className="list-category-head">
+            <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
               <span className="list-num">III.</span>
               <span className="list-title">BIM'26</span>
-            </div>
+            </Link>
             <div className="list-sub-options">
               <Link href="/calendar" onClick={handleLinkClick}>&#123; About BIM'26 &#125;</Link>
               <Link href="/calendar" onClick={handleLinkClick}>&#123; Becoming the Ocean &#125;</Link>
@@ -59,10 +59,10 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
 
           {/* IV ART EXPLORA FESTIVAL */}
           <li className="menu-list-item">
-            <div className="list-category-head">
+            <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
               <span className="list-num">IV.</span>
               <span className="list-title">ART EXPLORA FESTIVAL</span>
-            </div>
+            </Link>
             <div className="list-sub-options">
               <Link href="/calendar" onClick={handleLinkClick}>&#123; About the Festival &#125;</Link>
               <Link href="/calendar" onClick={handleLinkClick}>&#123; Undertow / Contre;Courant &#125;</Link>
@@ -96,14 +96,14 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
 
           {/* VII PRACTICAL INFORMATION */}
           <li className="menu-list-item">
-            <div className="list-category-head">
+            <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
               <span className="list-num">VII.</span>
               <span className="list-title">PRACTICAL INFORMATION</span>
-            </div>
+            </Link>
             <div className="list-sub-options">
-              <a href="#">&#123; Map &#125;</a>
-              <a href="#">&#123; FAQs &#125;</a>
-              <a href="#">&#123; Search &#125;</a>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Map &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; FAQs &#125;</Link>
+              <Link href="/calendar" onClick={handleLinkClick}>&#123; Search &#125;</Link>
             </div>
           </li>
         </ul>
