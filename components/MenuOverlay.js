@@ -1,10 +1,28 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 
 export default function MenuOverlay({ menuOpen, setMenuOpen }) {
+  const lensRef = useRef(null);
+
   const handleLinkClick = () => {
     setMenuOpen(false);
+  };
+
+  const handleLensMouseMove = (e) => {
+    if (!lensRef.current) return;
+    const rect = lensRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    lensRef.current.style.setProperty('--lens-x', `${x}px`);
+    lensRef.current.style.setProperty('--lens-y', `${y}px`);
+    lensRef.current.style.setProperty('--lens-opacity', '1');
+  };
+
+  const handleLensMouseLeave = () => {
+    if (!lensRef.current) return;
+    lensRef.current.style.setProperty('--lens-opacity', '0');
   };
 
   return (
@@ -122,32 +140,32 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
             </ul>
           </div>
 
-          {/* Right Column: Photo Spotlight Card */}
+          {/* Right Column: Pure Graphic Photo with Circular Cursor Reveal (Sans cadre blanc, sans texte) */}
           <div className="menu-photo-column">
-            <div className="menu-spotlight-card">
-              <div className="menu-photo-img-wrap">
-                <img src="/watermelon-boy.png" alt="Jaou Tunis '26 - Watermelon Boy" />
-                <span className="menu-photo-live-badge">FOCUS BIENNALE</span>
+            <div 
+              className="menu-photo-img-wrap graphic-lens-container"
+              ref={lensRef}
+              onMouseMove={handleLensMouseMove}
+              onMouseEnter={handleLensMouseMove}
+              onMouseLeave={handleLensMouseLeave}
+            >
+              {/* Layer 1: Stylized Graphic (Capture 2 Style) */}
+              <div className="graphic-layer-base">
+                <img src="/becoming-the-ocean.jpg" alt="Becoming The Ocean - BIM'26" className="graphic-img-stylized" />
+                <div className="graphic-gradient-overlay"></div>
               </div>
-              <div className="menu-photo-info">
-                <div className="menu-photo-tag-row">
-                  <span className="menu-photo-tag">JAOU TUNIS &rsquo;26</span>
-                  <span className="menu-photo-cat">BIENNALE ARCHIPEL</span>
-                </div>
-                <h4 className="menu-photo-quote">
-                  AN EXPLORATION OF &lsquo;RESISTANCE AS THE DEEPEST FORM OF LOVE&rsquo;
-                </h4>
-                <p className="menu-photo-date">
-                  <i className="fa-regular fa-calendar"></i> 23 Octobre — 22 Novembre 2026 &bull; Tunis
-                </p>
-                <Link href="/calendar" onClick={handleLinkClick} className="menu-photo-link">
-                  <span>Explorer le Calendrier</span>
-                  <i className="fa-solid fa-arrow-right"></i>
-                </Link>
+
+              {/* Layer 2: Real Colors Revealed in Circular Cursor Lens */}
+              <div className="graphic-layer-real">
+                <img src="/becoming-the-ocean.jpg" alt="Becoming The Ocean - Real Colors" className="graphic-img-real" />
               </div>
+
+              {/* Tracking Lens Ring, Hint & Badge */}
+              <div className="graphic-lens-ring"></div>
+              <span className="graphic-lens-hint">✦ Déplacez le curseur pour révéler</span>
+              <span className="menu-photo-live-badge">FOCUS BIM&rsquo;26</span>
             </div>
           </div>
-
         </div>
 
         {/* Creative Bottombar inside Menu */}

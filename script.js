@@ -35,9 +35,13 @@ if (header) {
 const heroImg = document.getElementById('heroImage');
 const heroVideo = document.getElementById('heroVideo');
 if (heroImg && heroVideo) {
+  // Initially photo is visible: logo is hidden when navbar is transparent
+  document.body.classList.remove('hero-video-active');
+
   function startVideo() {
     heroVideo.classList.add('fade-in');
     heroImg.classList.add('fade-out');
+    document.body.classList.add('hero-video-active');
     heroVideo.currentTime = 0;
     heroVideo.play().catch(() => {});
   }
@@ -49,7 +53,18 @@ if (heroImg && heroVideo) {
   heroVideo.addEventListener('ended', () => {
     heroVideo.classList.remove('fade-in');
     heroImg.classList.remove('fade-out');
+    document.body.classList.remove('hero-video-active');
     setTimeout(startVideo, 5000);
+  });
+
+  // Listeners to ensure body class is always in sync with video playback
+  heroVideo.addEventListener('play', () => {
+    document.body.classList.add('hero-video-active');
+  });
+  heroVideo.addEventListener('pause', () => {
+    if (heroVideo.ended || !heroVideo.classList.contains('fade-in')) {
+      document.body.classList.remove('hero-video-active');
+    }
   });
 }
 
@@ -364,9 +379,33 @@ const scrollObserver = new IntersectionObserver((entries, observer) => {
   });
 }, scrollObserverOptions);
 
-document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-left, .reveal-slide-right, .video-frame, .reveal-form-card').forEach(el => {
+document.querySelectorAll(
+  '.reveal-on-scroll, .reveal-zoom, .reveal-slide-left, .reveal-slide-right, .video-frame, .reveal-form-card, .reveal-artists-track'
+).forEach(el => {
   scrollObserver.observe(el);
 });
+
+// Dynamic scroll-driven ocean depth effect for Becoming the Ocean section
+const artistsSectionEl = document.querySelector('.artists-accordion-section');
+if (artistsSectionEl) {
+  let tickingScroll = false;
+  const updateArtistsScrollProgress = () => {
+    if (!tickingScroll) {
+      window.requestAnimationFrame(() => {
+        const rect = artistsSectionEl.getBoundingClientRect();
+        const wh = window.innerHeight;
+        if (rect.top < wh && rect.bottom > 0) {
+          const progress = Math.max(0, Math.min(1, (wh - rect.top) / (wh + rect.height)));
+          artistsSectionEl.style.setProperty('--scroll-progress', progress.toFixed(3));
+        }
+        tickingScroll = false;
+      });
+      tickingScroll = true;
+    }
+  };
+  window.addEventListener('scroll', updateArtistsScrollProgress, { passive: true });
+  updateArtistsScrollProgress();
+}
 
 // -------------------------------------------------------------
 // DYNAMIC AGENDA FILTERING & CALENDAR HIGHLIGHTING (calendar.html)
@@ -374,6 +413,47 @@ document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-left, 
 const agendaPills = document.querySelectorAll('.agenda-pill');
 const dayBlocks = document.querySelectorAll('.agenda-day-block');
 const festivalDayCells = document.querySelectorAll('.day-cell.is-festival');
+const tabOct = document.getElementById('tabOct');
+const tabNov = document.getElementById('tabNov');
+const prevMonthBtn = document.getElementById('prevMonthBtn');
+const nextMonthBtn = document.getElementById('nextMonthBtn');
+const monthNavTitle = document.getElementById('monthNavTitle');
+const octoberDaysGrid = document.getElementById('octoberDaysGrid');
+const novemberDaysGrid = document.getElementById('novemberDaysGrid');
+const resetDateFilterWrap = document.getElementById('resetDateFilterWrap');
+const resetDateFilterBtn = document.getElementById('resetDateFilterBtn');
+
+let currentActiveMonth = 'october';
+let activeCategory = 'all';
+let selectedDateKey = null; // e.g. "oct-24" or "nov-7"
+
+function switchMonth(targetMonth) {
+  currentActiveMonth = targetMonth;
+  if (targetMonth === 'october') {
+    if (tabOct) tabOct.classList.add('active');
+    if (tabNov) tabNov.classList.remove('active');
+    if (monthNavTitle) monthNavTitle.textContent = 'October 2026';
+    if (octoberDaysGrid) octoberDaysGrid.style.display = 'grid';
+    if (novemberDaysGrid) novemberDaysGrid.style.display = 'none';
+  } else {
+    if (tabNov) tabNov.classList.add('active');
+    if (tabOct) tabOct.classList.remove('active');
+    if (monthNavTitle) monthNavTitle.textContent = 'November 2026';
+    if (novemberDaysGrid) novemberDaysGrid.style.display = 'grid';
+    if (octoberDaysGrid) octoberDaysGrid.style.display = 'none';
+  }
+}
+
+if (tabOct && tabNov) {
+  tabOct.addEventListener('click', () => switchMonth('october'));
+  tabNov.addEventListener('click', () => switchMonth('november'));
+}
+
+if (prevMonthBtn && nextMonthBtn) {
+  const toggle = () => switchMonth(currentActiveMonth === 'october' ? 'november' : 'october');
+  prevMonthBtn.addEventListener('click', toggle);
+  nextMonthBtn.addEventListener('click', toggle);
+}
 
 const hexCategoryColors = {
   exhibition: '#E54D8A',
@@ -381,9 +461,6 @@ const hexCategoryColors = {
   performance: '#DC2626',
   encounter: '#EAB308'
 };
-
-let activeCategory = 'all';
-let selectedDateNum = null;
 
 function updateAgendaDisplay() {
   const targetHex = hexCategoryColors[activeCategory] || null;
@@ -422,8 +499,9 @@ function updateAgendaDisplay() {
 
   // 2. Filter event rows & day blocks
   dayBlocks.forEach(block => {
-    const dateNum = block.getAttribute('id')?.replace('day-', '');
-    const isDateMatch = selectedDateNum === null || dateNum === String(selectedDateNum);
+    const blockId = block.getAttribute('id') || '';
+    const dateKey = blockId.replace('day-', ''); // e.g. "oct-23" or "nov-14"
+    const isDateMatch = selectedDateKey === null || dateKey === selectedDateKey;
 
     let visibleCount = 0;
     const rows = block.querySelectorAll('.agenda-event-row');
@@ -445,6 +523,10 @@ function updateAgendaDisplay() {
       block.style.display = 'none';
     }
   });
+
+  if (resetDateFilterWrap) {
+    resetDateFilterWrap.style.display = selectedDateKey ? 'block' : 'none';
+  }
 }
 
 if (agendaPills.length > 0) {
@@ -463,17 +545,28 @@ if (agendaPills.length > 0) {
 if (festivalDayCells.length > 0) {
   festivalDayCells.forEach(cell => {
     cell.addEventListener('click', () => {
+      const month = cell.getAttribute('data-month') === 'october' ? 'oct' : 'nov';
       const dateNum = cell.getAttribute('data-date');
-      if (selectedDateNum === Number(dateNum)) {
-        selectedDateNum = null;
+      const key = `${month}-${dateNum}`;
+
+      if (selectedDateKey === key) {
+        selectedDateKey = null;
         festivalDayCells.forEach(c => c.classList.remove('selected-day'));
       } else {
-        selectedDateNum = Number(dateNum);
+        selectedDateKey = key;
         festivalDayCells.forEach(c => c.classList.remove('selected-day'));
         cell.classList.add('selected-day');
       }
       updateAgendaDisplay();
     });
+  });
+}
+
+if (resetDateFilterBtn) {
+  resetDateFilterBtn.addEventListener('click', () => {
+    selectedDateKey = null;
+    festivalDayCells.forEach(c => c.classList.remove('selected-day'));
+    updateAgendaDisplay();
   });
 }
 
@@ -531,3 +624,117 @@ if (newsletterForm && newsletterToast) {
     }, 4500);
   });
 }
+
+// -------------------------------------------------------------
+// CINEMATIC CALENDAR PAGE TRANSITION (Art Wipe Curtain)
+// -------------------------------------------------------------
+const calendarWipe = document.getElementById('calendarPageWipe');
+const isCalendarHtmlPage = window.location.pathname.endsWith('calendar.html') || window.location.pathname.endsWith('/calendar');
+
+// Check if navigating in via previous wipe trigger
+if (calendarWipe && sessionStorage.getItem('jaou_calendar_wipe') === '1') {
+  sessionStorage.removeItem('jaou_calendar_wipe');
+  calendarWipe.classList.add('leaving');
+  setTimeout(() => {
+    calendarWipe.classList.remove('leaving');
+  }, 650);
+}
+
+// Click listener for Calendar links and buttons
+document.addEventListener('click', (e) => {
+  const calTrigger = e.target.closest('a[href="calendar.html"], a[href="/calendar"], .calendar-btn');
+  if (calTrigger && calendarWipe) {
+    e.preventDefault();
+    
+    // Close menu if open
+    if (typeof menuOverlay !== 'undefined' && menuOverlay) menuOverlay.classList.remove('open');
+    if (typeof toggleMenuBtn !== 'undefined' && toggleMenuBtn) toggleMenuBtn.classList.remove('active');
+    if (typeof header !== 'undefined' && header) header.classList.remove('header-menu-open');
+
+    if (isCalendarHtmlPage) {
+      // Re-trigger unveil on calendar page and smooth scroll to top
+      calendarWipe.classList.remove('leaving');
+      calendarWipe.classList.add('entering');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        calendarWipe.classList.remove('entering');
+        calendarWipe.classList.add('leaving');
+        setTimeout(() => {
+          calendarWipe.classList.remove('leaving');
+        }, 650);
+      }, 460);
+    } else {
+      calendarWipe.classList.remove('leaving');
+      calendarWipe.classList.add('entering');
+      sessionStorage.setItem('jaou_calendar_wipe', '1');
+      setTimeout(() => {
+        window.location.href = calTrigger.getAttribute('href') || 'calendar.html';
+      }, 460);
+    }
+  }
+});
+
+// -------------------------------------------------------------
+// ARTISTS ACCORDION HOVER / CLICK INTERACTION
+// -------------------------------------------------------------
+const artistCards = document.querySelectorAll('.artist-accordion-card');
+if (artistCards.length > 0) {
+  artistCards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      artistCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    });
+    card.addEventListener('click', () => {
+      artistCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    });
+  });
+}
+
+// -------------------------------------------------------------
+// INTERACTIVE GRAPHIC LENS REVEAL (Capture 2 Style)
+// -------------------------------------------------------------
+function initGraphicLensReveal() {
+  const containers = document.querySelectorAll('.graphic-lens-container');
+  containers.forEach(container => {
+    const onMove = (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      container.style.setProperty('--lens-x', `${x}px`);
+      container.style.setProperty('--lens-y', `${y}px`);
+      container.style.setProperty('--lens-opacity', '1');
+    };
+
+    const onLeave = () => {
+      container.style.setProperty('--lens-opacity', '0');
+    };
+
+    container.addEventListener('mousemove', onMove);
+    container.addEventListener('mouseenter', onMove);
+    container.addEventListener('mouseleave', onLeave);
+
+    container.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const rect = container.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        const y = e.touches[0].clientY - rect.top;
+        container.style.setProperty('--lens-x', `${x}px`);
+        container.style.setProperty('--lens-y', `${y}px`);
+        container.style.setProperty('--lens-opacity', '1');
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      container.style.setProperty('--lens-opacity', '0');
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGraphicLensReveal);
+} else {
+  initGraphicLensReveal();
+}
+
+

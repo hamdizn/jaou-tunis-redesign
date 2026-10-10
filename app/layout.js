@@ -5,6 +5,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import MenuOverlay from '@/components/MenuOverlay';
 import Footer from '@/components/Footer';
+import CalendarTransition from '@/components/CalendarTransition';
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,12 @@ export default function RootLayout({ children }) {
         <title>JAOU TUNIS 2026 — Biennale d'Art Contemporain</title>
         <meta name="description" content="JAOU TUNIS 2026 — Biennale d'Art Contemporain organisée par la Fondation Kamel Lazaar." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* Favicons (Navbar Jaou Logo) */}
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+        <link rel="icon" type="image/png" href="/jaou-logo.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/jaou-logo.png" />
         
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,6 +34,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MenuOverlay menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <CalendarTransition />
         {children}
         <Footer />
       </body>

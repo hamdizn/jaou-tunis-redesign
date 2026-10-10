@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAOU TUNIS 2026 — Biennale d'Art Contemporain</title>
 
+  <!-- Favicons (Navbar Jaou Logo) -->
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png" />
+  <link rel="icon" type="image/png" href="jaou-logo.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="jaou-logo.png" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -178,32 +184,26 @@
           </ul>
         </div>
 
-        <!-- Right Column: Photo Spotlight Card -->
+        <!-- Right Column: Pure Graphic Photo with Circular Cursor Reveal (Sans cadre blanc, sans texte) -->
         <div class="menu-photo-column">
-          <div class="menu-spotlight-card">
-            <div class="menu-photo-img-wrap">
-              <img src="watermelon-boy.png" alt="Jaou Tunis '26 - Watermelon Boy" />
-              <span class="menu-photo-live-badge">FOCUS BIENNALE</span>
+          <div class="menu-photo-img-wrap graphic-lens-container" id="menuPhotoLensWrap">
+            <!-- Layer 1: Stylized Graphic (Capture 2 Style) -->
+            <div class="graphic-layer-base">
+              <img src="becoming-the-ocean.jpg" alt="Becoming The Ocean - BIM'26" class="graphic-img-stylized" />
+              <div class="graphic-gradient-overlay"></div>
             </div>
-            <div class="menu-photo-info">
-              <div class="menu-photo-tag-row">
-                <span class="menu-photo-tag">JAOU TUNIS '26</span>
-                <span class="menu-photo-cat">BIENNALE ARCHIPEL</span>
-              </div>
-              <h4 class="menu-photo-quote">
-                AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
-              </h4>
-              <p class="menu-photo-date">
-                <i class="fa-regular fa-calendar"></i> 23 Octobre — 22 Novembre 2026 • Tunis
-              </p>
-              <a href="calendar.html" class="menu-photo-link">
-                <span>Explorer le Calendrier</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
+
+            <!-- Layer 2: Real Colors Revealed in Circular Cursor Lens -->
+            <div class="graphic-layer-real">
+              <img src="becoming-the-ocean.jpg" alt="Becoming The Ocean - Real Colors" class="graphic-img-real" />
             </div>
+
+            <!-- Tracking Lens Ring, Hint & Badge -->
+            <div class="graphic-lens-ring"></div>
+            <span class="graphic-lens-hint">✦ Déplacez le curseur pour révéler</span>
+            <span class="menu-photo-live-badge">FOCUS BIM'26</span>
           </div>
         </div>
-
       </div>
 
       <!-- Creative Bottombar inside Menu -->
@@ -262,116 +262,373 @@
       </div>
     </section>
 
-    <!-- SPOTLIGHT SECTION: Photo a gauche, Ecriture a droite avec bouton Explorer le calendrier et animations -->
-    <section class="home-spotlight-section">
-      <div class="home-spotlight-container">
-        
-        <!-- PHOTO A GAUCHE (Survol affiche le message en flip 3D) -->
-        <div class="home-spotlight-photo-col reveal-slide-left">
-          <div class="spotlight-photo-flip-card" id="spotlightPhotoFlip">
-            <div class="spotlight-photo-flip-inner">
-              <!-- Face avant : La Photo -->
-              <div class="spotlight-photo-front">
-                <img 
-                  src="watermelon-boy.png" 
-                  alt="Biennale Archipel - Watermelon Boy" 
-                  class="spotlight-photo-img"
-                />
-                <div class="spotlight-photo-hint">
-                  <i class="fa-solid fa-arrow-rotate-right"></i>
-                  <span>Survoler la photo</span>
+    <!-- BLUE ZONE WRAPPER: An Exploration Spotlight + Join Us In Tunis with smooth gradient degradation -->
+    <div class="spotlight-join-blue-wrapper">
+      
+      <!-- SPOTLIGHT SECTION: Photo a gauche, Ecriture a droite avec bouton Explorer le calendrier et animations -->
+      <section class="home-spotlight-section">
+        <div class="home-spotlight-container">
+          
+          <!-- PHOTO A GAUCHE (Survol affiche le message en flip 3D) -->
+          <div class="home-spotlight-photo-col reveal-slide-left">
+            <div class="spotlight-photo-flip-card" id="spotlightPhotoFlip">
+              <div class="spotlight-photo-flip-inner">
+                <!-- Face avant : La Photo -->
+                <div class="spotlight-photo-front">
+                  <img 
+                    src="watermelon-boy.png" 
+                    alt="Biennale Archipel - Watermelon Boy" 
+                    class="spotlight-photo-img"
+                  />
+                  <div class="spotlight-photo-hint">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                    <span>Survoler la photo</span>
+                  </div>
+                </div>
+                <!-- Face arrière : Message affiche au survol -->
+                <div class="spotlight-photo-back">
+                  <span class="photo-back-tag">JAOU TUNIS '26</span>
+                  <h3 class="photo-back-quote">
+                    AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
+                  </h3>
+                  <p class="photo-back-sub">BIENNALE ARCHIPEL • TUNIS</p>
                 </div>
               </div>
-              <!-- Face arrière : Message affiche au survol -->
-              <div class="spotlight-photo-back">
-                <span class="photo-back-tag">JAOU TUNIS '26</span>
-                <h3 class="photo-back-quote">
-                  AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
-                </h3>
-                <p class="photo-back-sub">BIENNALE ARCHIPEL • TUNIS</p>
-              </div>
             </div>
           </div>
+
+          <!-- ECRITURE A DROITE SANS CADRE -->
+          <div class="home-spotlight-text-col reveal-slide-right">
+            <div class="home-spotlight-clean-text">
+              
+              <div class="spotlight-tag-row">
+                <span class="spotlight-tag-pill">
+                  <span class="pixel-dot-accent"></span> JAOU TUNIS '26
+                </span>
+                <span class="spotlight-cat-pill">BIENNALE ARCHIPEL</span>
+              </div>
+
+              <h2 class="spotlight-title">
+                AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
+              </h2>
+
+              <p class="spotlight-description">
+                Au cœur de la Biennale Archipel, une traversée curatoriale majeure inspirée par la pensée de Khalil Gibran. Une exploration poétique et engagée des solidarités, de la mémoire et de la transformation contemporaine.
+              </p>
+
+              <div class="spotlight-meta-info">
+                <div class="spotlight-meta-item">
+                  <i class="fa-regular fa-calendar-days"></i>
+                  <span>23 Octobre — 22 Novembre 2026</span>
+                </div>
+                <div class="spotlight-meta-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Caserne El Attarine • Médina de Tunis</span>
+                </div>
+              </div>
+
+              <div class="spotlight-cta-wrap">
+                <a href="calendar.html" class="spotlight-calendar-btn">
+                  <span>EXPLORER LE CALENDRIER</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
         </div>
+      </section>
 
-        <!-- ECRITURE A DROITE SANS CADRE -->
-        <div class="home-spotlight-text-col reveal-slide-right">
-          <div class="home-spotlight-clean-text">
-            
-            <div class="spotlight-tag-row">
-              <span class="spotlight-tag-pill">
-                <span class="pixel-dot-accent"></span> JAOU TUNIS '26
-              </span>
-              <span class="spotlight-cat-pill">BIENNALE ARCHIPEL</span>
+      <!-- Join Us In Tunis Section -->
+      <section class="join-section-wrapper">
+        <div class="join-section">
+          <div class="join-card reveal-form-card">
+            <div class="join-text">
+              <div class="pixel-tag"><span class="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
+              <h2>JOIN US IN TUNIS ✦</h2>
+              <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend ofc
+                Jaou, we would be delighted to welcome you.</p>
             </div>
+            <button id="openRegisterModal" class="join-btn">
+              REGISTER YOUR INTEREST <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
 
-            <h2 class="spotlight-title">
-              AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
-            </h2>
+    </div>
 
-            <p class="spotlight-description">
-              Au cœur de la Biennale Archipel, une traversée curatoriale majeure inspirée par la pensée de Khalil Gibran. Une exploration poétique et engagée des solidarités, de la mémoire et de la transformation contemporaine.
+    <!-- ARTISTS SECTION (Capture 2 Expanding Accordion Gallery with Capture 1 BIM'26 Styling) -->
+    <section class="artists-accordion-section" id="artistsSection">
+      <div class="artists-accordion-container">
+        <div class="artists-accordion-header reveal-on-scroll">
+          <div class="artists-header-text">
+            <div class="pixel-tag"><span class="pixel-dot-accent"></span> [ 01.5 // BIENNALE ARTISTS // BIM'26 ]</div>
+            <h2 class="artists-accordion-title">ARTISTS — BECOMING THE OCEAN ✦</h2>
+            <p class="artists-accordion-desc">
+              16 artistes et cinéastes internationaux réunis à Tunis pour la Biennale de l'Image en Mouvement 2026.
             </p>
+          </div>
+          <a href="https://jaou.tn/evenement/bim/artistes" target="_blank" rel="noopener noreferrer" class="artists-view-all-link">
+            <span>Voir tous les artistes</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
-            <div class="spotlight-meta-info">
-              <div class="spotlight-meta-item">
-                <i class="fa-regular fa-calendar-days"></i>
-                <span>23 Octobre — 22 Novembre 2026</span>
-              </div>
-              <div class="spotlight-meta-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Caserne El Attarine • Médina de Tunis</span>
-              </div>
+      <!-- Full-Width Series of Artists (Edge-to-Edge) -->
+      <div class="artists-accordion-track reveal-artists-track" id="artistsAccordion">
+        
+        <!-- 01 SARAH ZERYAB (Default Active) -->
+        <article class="artist-accordion-card active" data-artist="sarah-zeryab">
+          <img src="artists/sarah-zeryab.webp" alt="Sarah Zeryab" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <!-- Collapsed Vertical Spine -->
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">01</span>
+            <span class="artist-spine-name">SARAH ZERYAB</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <!-- Expanded Full Content (Capture 1 BIM'26 Design) -->
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">SARAH ZERYAB</h3>
+              <div class="artist-bim-name-ar">سارة زرياب</div>
             </div>
-
-            <div class="spotlight-cta-wrap">
-              <a href="calendar.html" class="spotlight-calendar-btn">
-                <span>EXPLORER LE CALENDRIER</span>
-                <i class="fa-solid fa-arrow-right"></i>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Sarah_Zeryab?id=410" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Sarah Zeryab">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
-
           </div>
-        </div>
+        </article>
 
-      </div>
-    </section>
+        <!-- 02 HAJRA WAHEED -->
+        <article class="artist-accordion-card" data-artist="hajra-waheed">
+          <img src="artists/hajra-waheed.webp" alt="Hajra Waheed" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
 
-    <!-- Join Us In Tunis Section (White-to-Teal Gradient Band) -->
-    <section class="join-section-wrapper">
-      <div class="join-section">
-        <div class="join-card reveal-form-card">
-          <div class="join-text">
-            <div class="pixel-tag"><span class="pixel-dot-accent"></span> [ 01 // CALL FOR ARTISTS & VISITORS ]</div>
-            <h2>JOIN US IN TUNIS ✦</h2>
-            <p>Whether you are an artist, curator, collector, journalist, cultural practitioner or long-time friend of
-              Jaou, we would be delighted to welcome you.</p>
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">02</span>
+            <span class="artist-spine-name">HAJRA WAHEED</span>
+            <span class="artist-spine-dot"></span>
           </div>
-          <button id="openRegisterModal" class="join-btn">
-            REGISTER YOUR INTEREST <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
 
-        <!-- Save The Date Video Player Frame -->
-        <div class="video-frame-wrapper">
-          <div class="video-frame">
-            <div class="video-frame-badge">
-              <span class="badge-dot"></span>
-              <span>SAVE THE DATE // JAOU TUNIS 2026</span>
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">HAJRA WAHEED</h3>
+              <div class="artist-bim-name-ar">هاجر وحيد</div>
             </div>
-            <video controls playsinline poster="hero-poster-exact.png">
-              <source src="save-the-date-jaou-tunis.mp4" type="video/mp4">
-              Votre navigateur ne prend pas en charge la lecture de vidéo.
-            </video>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Hajra_Waheed?id=408" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Hajra Waheed">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- 03 CASTIEL VITORINO BRASILEIRO -->
+        <article class="artist-accordion-card" data-artist="castiel-vitorino">
+          <img src="artists/castiel-vitorino.webp" alt="Castiel Vitorino Brasileiro" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">03</span>
+            <span class="artist-spine-name">CASTIEL VITORINO</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">CASTIEL VITORINO BRASILEIRO</h3>
+              <div class="artist-bim-name-ar">كاستيل فيتورينو برازيليرو</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Castiel_Vitorino?id=402" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Castiel Vitorino">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 NATASHA TONTEY -->
+        <article class="artist-accordion-card" data-artist="natasha-tontey">
+          <img src="artists/natasha-tontey.webp" alt="Natasha Tontey" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">04</span>
+            <span class="artist-spine-name">NATASHA TONTEY</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">NATASHA TONTEY</h3>
+              <div class="artist-bim-name-ar">ناتاشا تونتي</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Natasha_Tontey?id=404" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Natasha Tontey">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 HILDEGARD TITUS -->
+        <article class="artist-accordion-card" data-artist="hildegard-titus">
+          <img src="artists/hildegard-titus.webp" alt="Hildegard Titus" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">05</span>
+            <span class="artist-spine-name">HILDEGARD TITUS</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">HILDEGARD TITUS</h3>
+              <div class="artist-bim-name-ar">هيلدغارد تيتوس</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Hildegard_Titus?id=409" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Hildegard Titus">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 DIANE SEVERIN NGUYEN -->
+        <article class="artist-accordion-card" data-artist="diane-severin-nguyen">
+          <img src="artists/diane-severin-nguyen.webp" alt="Diane Severin Nguyen" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">06</span>
+            <span class="artist-spine-name">DIANE SEVERIN NGUYEN</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">DIANE SEVERIN NGUYEN</h3>
+              <div class="artist-bim-name-ar">ديان سيفيرين نغوين</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Diane_Severin_Nguyen?id=412" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Diane Severin Nguyen">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07 YOUNÈS BEN SLIMANE -->
+        <article class="artist-accordion-card" data-artist="younes-ben-slimane">
+          <img src="artists/younes-ben-slimane.webp" alt="Younès Ben Slimane" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">07</span>
+            <span class="artist-spine-name">YOUNÈS BEN SLIMANE</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">YOUNÈS BEN SLIMANE</h3>
+              <div class="artist-bim-name-ar">يونس بن سليمان</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Younes_Ben_Slimane?id=407" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Younès Ben Slimane">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08 MONA BENYAMIN -->
+        <article class="artist-accordion-card" data-artist="mona-benyamin">
+          <img src="artists/mona-benyamin.webp" alt="Mona Benyamin" class="artist-card-bg" loading="lazy" />
+          <div class="artist-card-overlay"></div>
+
+          <div class="artist-collapsed-spine">
+            <span class="artist-spine-num">08</span>
+            <span class="artist-spine-name">MONA BENYAMIN</span>
+            <span class="artist-spine-dot"></span>
+          </div>
+
+          <div class="artist-expanded-wrap">
+            <div class="artist-bim-header">
+              <div class="artist-bim-subtitle-ar">بينالي الصورة المتحركة</div>
+              <div class="artist-bim-subtitle-fr">BIENNALE DE L'IMAGE EN MOUVEMENT</div>
+              <h3 class="artist-bim-name-latin">MONA BENYAMIN</h3>
+              <div class="artist-bim-name-ar">منى بنيامين</div>
+            </div>
+            <div class="artist-expanded-footer">
+              <div class="artist-footer-badge">
+                <span class="badge-dot"></span>
+                <span>BIM'26 // ARTISTE INVITÉ</span>
+              </div>
+              <a href="https://jaou.tn/evenement/bim/artiste/Mona_Benyamin?id=400" target="_blank" rel="noopener noreferrer" class="artist-footer-link" aria-label="Profil Mona Benyamin">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- Smooth Teal-to-Yellow Transition Strictly Below Video -->
-    <div class="teal-to-yellow-fade"></div>
+    <!-- Smooth Transition to Yellow below Artists -->
+    <div class="white-to-yellow-fade"></div>
 
-    <!-- Newsletter Section (100% Solid Jaou Yellow #FEF8D6) -->
+    <!-- Newsletter Section (100% Solid Jaou Yellow #FEF8D6) with Video Player below the form -->
     <section class="newsletter-section-wrapper">
       <div class="newsletter-section">
         <div class="newsletter-card reveal-form-card">
@@ -392,7 +649,7 @@
               </div>
             </div>
 
-            <div class="input-group" style="margin-bottom: 2.5rem;">
+            <div class="input-group" style="margin-bottom: 1.4rem;">
               <label class="input-label-pixel">// EMAIL ADDRESS</label>
               <input type="email" class="input-modern" placeholder="artist@domain.com" required />
             </div>
@@ -406,6 +663,20 @@
               <span>✦ Inscription réussie ! Bienvenue dans le réseau Jaou Tunis 2026.</span>
             </div>
           </form>
+        </div>
+
+        <!-- Save The Date Video Player Frame (Positioned below the Join Our Artists form) -->
+        <div class="video-frame-wrapper">
+          <div class="video-frame">
+            <div class="video-frame-badge">
+              <span class="badge-dot"></span>
+              <span>SAVE THE DATE // JAOU TUNIS 2026</span>
+            </div>
+            <video controls playsinline poster="hero-poster-exact.png">
+              <source src="save-the-date-jaou-tunis.mp4" type="video/mp4">
+              Votre navigateur ne prend pas en charge la lecture de vidéo.
+            </video>
+          </div>
         </div>
       </div>
     </section>
@@ -526,6 +797,26 @@
 
     </div>
   </footer>
+
+  <!-- Cinematic Calendar Transition Wipe Curtain -->
+  <div class="calendar-page-wipe" id="calendarPageWipe" aria-hidden="true">
+    <div class="wipe-layer wipe-teal"></div>
+    <div class="wipe-layer wipe-yellow"></div>
+    <div class="wipe-content">
+      <div class="wipe-badge">
+        <span class="wipe-dot"></span>
+        <span class="wipe-tag">JAOU TUNIS 2026 // ARCHIPEL</span>
+      </div>
+      <div class="wipe-title-wrap">
+        <h2 class="wipe-title">CALENDRIER</h2>
+      </div>
+      <div class="wipe-dates">
+        <span>23 OCTOBRE — 22 NOVEMBRE 2026</span>
+        <span class="wipe-sep">•</span>
+        <span>MÉDINA DE TUNIS</span>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
