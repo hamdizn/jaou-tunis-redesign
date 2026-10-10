@@ -1,13 +1,21 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 
 export default function MenuOverlay({ menuOpen, setMenuOpen }) {
   const lensRef = useRef(null);
+  const [activeItem, setActiveItem] = useState(null);
 
   const handleLinkClick = () => {
     setMenuOpen(false);
+  };
+
+  const handleToggleItem = (index, e) => {
+    // If on touch device, toggle active state
+    if (typeof window !== 'undefined' && (window.innerWidth <= 900 || 'ontouchstart' in window)) {
+      setActiveItem(prev => prev === index ? null : index);
+    }
   };
 
   const handleLensMouseMove = (e) => {
@@ -48,11 +56,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
             <ul className="menu-vertical-list">
               
               {/* I ABOUT US */}
-              <li className="menu-list-item">
-                <Link href="/#edito" onClick={handleLinkClick} className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 0 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(0, e)} className="list-category-head">
                   <span className="list-num">I.</span>
                   <span className="list-title">ABOUT US</span>
-                </Link>
+                </div>
                 <div className="list-sub-options">
                   <Link href="/#edito" onClick={handleLinkClick}>Jaou Tunis</Link>
                   <a href="https://www.kamellazaarfoundation.org/" target="_blank" rel="noopener noreferrer">KLF Foundation</a>
@@ -60,11 +68,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* II JAOU TUNIS'26 */}
-              <li className="menu-list-item">
-                <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 1 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(1, e)} className="list-category-head">
                   <span className="list-num">II.</span>
                   <span className="list-title">JAOU TUNIS'26</span>
-                </Link>
+                </div>
                 <div className="list-sub-options">
                   <Link href="/calendar" onClick={handleLinkClick}>Archipelago Biennale</Link>
                   <Link href="/calendar" onClick={handleLinkClick}>Exhibitions</Link>
@@ -75,11 +83,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* III BIM'26 */}
-              <li className="menu-list-item">
-                <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 2 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(2, e)} className="list-category-head">
                   <span className="list-num">III.</span>
                   <span className="list-title">BIM'26</span>
-                </Link>
+                </div>
                 <div className="list-sub-options">
                   <Link href="/calendar" onClick={handleLinkClick}>About BIM'26</Link>
                   <Link href="/calendar" onClick={handleLinkClick}>Becoming the Ocean</Link>
@@ -89,11 +97,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* IV ART EXPLORA FESTIVAL */}
-              <li className="menu-list-item">
-                <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 3 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(3, e)} className="list-category-head">
                   <span className="list-num">IV.</span>
                   <span className="list-title">ART EXPLORA FESTIVAL</span>
-                </Link>
+                </div>
                 <div className="list-sub-options">
                   <Link href="/calendar" onClick={handleLinkClick}>About the Festival</Link>
                   <Link href="/calendar" onClick={handleLinkClick}>Undertow / Contre-Courant</Link>
@@ -102,8 +110,8 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* V PARTNERS */}
-              <li className="menu-list-item">
-                <div className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 4 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(4, e)} className="list-category-head">
                   <span className="list-num">V.</span>
                   <span className="list-title">PARTNERS</span>
                 </div>
@@ -114,8 +122,8 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* VI MEDIA */}
-              <li className="menu-list-item">
-                <div className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 5 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(5, e)} className="list-category-head">
                   <span className="list-num">VI.</span>
                   <span className="list-title">MEDIA</span>
                 </div>
@@ -126,11 +134,11 @@ export default function MenuOverlay({ menuOpen, setMenuOpen }) {
               </li>
 
               {/* VII PRACTICAL INFORMATION */}
-              <li className="menu-list-item">
-                <Link href="/calendar" onClick={handleLinkClick} className="list-category-head">
+              <li className={`menu-list-item ${activeItem === 6 ? 'active' : ''}`}>
+                <div onClick={(e) => handleToggleItem(6, e)} className="list-category-head">
                   <span className="list-num">VII.</span>
                   <span className="list-title">PRACTICAL INFORMATION</span>
-                </Link>
+                </div>
                 <div className="list-sub-options">
                   <Link href="/calendar" onClick={handleLinkClick}>Map</Link>
                   <Link href="/calendar" onClick={handleLinkClick}>FAQs</Link>

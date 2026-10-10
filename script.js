@@ -70,12 +70,27 @@ if (heroImg && heroVideo) {
 
 const menuListItems = document.querySelectorAll('.menu-list-item');
 menuListItems.forEach(item => {
-  const links = item.querySelectorAll('.list-sub-options a, a.list-category-head');
-  links.forEach(link => {
+  const categoryHead = item.querySelector('.list-category-head');
+  if (categoryHead) {
+    categoryHead.addEventListener('click', (e) => {
+      // If on mobile or touch device, toggle active accordion state
+      if (window.innerWidth <= 900 || ('ontouchstart' in window)) {
+        const isAlreadyActive = item.classList.contains('active');
+        menuListItems.forEach(i => i.classList.remove('active'));
+        if (!isAlreadyActive) {
+          e.preventDefault();
+          item.classList.add('active');
+        }
+      }
+    });
+  }
+
+  const subLinks = item.querySelectorAll('.list-sub-options a');
+  subLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (menuOverlay) menuOverlay.classList.remove('open');
-      if (toggleMenuBtn) toggleMenuBtn.classList.remove('active');
-      if (header) header.classList.remove('header-menu-open');
+      if (typeof menuOverlay !== 'undefined' && menuOverlay) menuOverlay.classList.remove('open');
+      if (typeof toggleMenuBtn !== 'undefined' && toggleMenuBtn) toggleMenuBtn.classList.remove('active');
+      if (typeof header !== 'undefined' && header) header.classList.remove('header-menu-open');
     });
   });
 });
@@ -626,53 +641,135 @@ if (newsletterForm && newsletterToast) {
 }
 
 // -------------------------------------------------------------
-// CINEMATIC CALENDAR PAGE TRANSITION (Art Wipe Curtain)
+// CINEMATIC CALENDAR PAGE TRANSITION (5-Second Logo Animation)
 // -------------------------------------------------------------
 const calendarWipe = document.getElementById('calendarPageWipe');
 const isCalendarHtmlPage = window.location.pathname.endsWith('calendar.html') || window.location.pathname.endsWith('/calendar');
+let wipeTimer = null;
+let isWiping = false;
 
-// Check if navigating in via previous wipe trigger
-if (calendarWipe && sessionStorage.getItem('jaou_calendar_wipe') === '1') {
-  sessionStorage.removeItem('jaou_calendar_wipe');
-  calendarWipe.classList.add('leaving');
-  setTimeout(() => {
-    calendarWipe.classList.remove('leaving');
-  }, 650);
+// Check if page was loaded after a cinematic transition to smoothly reveal new page
+try {
+  if (sessionStorage.getItem('jaou_transition_reveal') === '1' && calendarWipe) {
+    sessionStorage.removeItem('jaou_transition_reveal');
+    calendarWipe.classList.add('leaving');
+    setTimeout(() => {
+      calendarWipe.classList.remove('leaving');
+    }, 280);
+  }
+} catch (err) {}
+
+function finishWipe(destUrl) {
+  if (wipeTimer) {
+    clearTimeout(wipeTimer);
+    wipeTimer = null;
+  }
+  if (!calendarWipe) return;
+
+  const dest = destUrl || 'calendar.html';
+  const isDestHome = dest === 'index.html' || dest === '/';
+  const isCurrentHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+
+  // If already on the destination page, simply scroll to top and fade overlay out
+  if ((isDestHome && isCurrentHome) || (!isDestHome && isCalendarHtmlPage)) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    calendarWipe.classList.remove('entering');
+    calendarWipe.classList.add('leaving');
+    setTimeout(() => {
+      calendarWipe.classList.remove('leaving');
+      isWiping = false;
+    }, 280);
+    return;
+  }
+
+  // When navigating to a DIFFERENT page:
+  // Store reveal flag so new page can smoothly dissolve the overlay upon arrival
+  try {
+    sessionStorage.setItem('jaou_transition_reveal', '1');
+  } catch (err) {}
+
+  // Navigate immediately while overlay is STILL 100% covering the screen!
+  // This guarantees the old page NEVER flashes back into view!
+  window.location.href = isDestHome ? 'index.html' : 'calendar.html';
 }
 
-// Click listener for Calendar links and buttons
+// Allow skipping immediately on click or escape
+if (calendarWipe) {
+  calendarWipe.addEventListener('click', () => {
+    if (isWiping) finishWipe();
+  });
+}
+window.addEventListener('keydown', (e) => {
+  if (isWiping && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+    finishWipe();
+  }
+});
+
+// Click listener for Calendar, Home, and Logo links (capture phase for solid interception)
 document.addEventListener('click', (e) => {
-  const calTrigger = e.target.closest('a[href="calendar.html"], a[href="/calendar"], .calendar-btn');
-  if (calTrigger && calendarWipe) {
+  const trigger = e.target.closest(
+    'a[href="calendar.html"], a[href="/calendar"], .calendar-btn, .spotlight-calendar-btn, .nav-brand, a[href="index.html"], a[href="/"], a[aria-label="Home"], a[aria-label="Jaou Tunis Home"], .icon-link[aria-label="Home"]'
+  );
+  if (trigger && calendarWipe) {
     e.preventDefault();
+    e.stopPropagation();
+    if (isWiping) return;
+    isWiping = true;
     
+    // Tactile launch animation on clicked element
+    trigger.classList.add('calendar-btn-launching');
+    setTimeout(() => trigger.classList.remove('calendar-btn-launching'), 450);
+
     // Close menu if open
     if (typeof menuOverlay !== 'undefined' && menuOverlay) menuOverlay.classList.remove('open');
     if (typeof toggleMenuBtn !== 'undefined' && toggleMenuBtn) toggleMenuBtn.classList.remove('active');
     if (typeof header !== 'undefined' && header) header.classList.remove('header-menu-open');
 
-    if (isCalendarHtmlPage) {
-      // Re-trigger unveil on calendar page and smooth scroll to top
-      calendarWipe.classList.remove('leaving');
-      calendarWipe.classList.add('entering');
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        calendarWipe.classList.remove('entering');
-        calendarWipe.classList.add('leaving');
-        setTimeout(() => {
-          calendarWipe.classList.remove('leaving');
-        }, 650);
-      }, 460);
-    } else {
-      calendarWipe.classList.remove('leaving');
-      calendarWipe.classList.add('entering');
-      sessionStorage.setItem('jaou_calendar_wipe', '1');
-      setTimeout(() => {
-        window.location.href = calTrigger.getAttribute('href') || 'calendar.html';
-      }, 460);
+    // Determine target destination
+    const isHome = trigger.matches(
+      '.nav-brand, .nav-brand *, a[aria-label="Home"], a[aria-label="Home"] *, a[aria-label="Jaou Tunis Home"], a[aria-label="Jaou Tunis Home"] *'
+    ) || trigger.getAttribute('href') === 'index.html' || trigger.getAttribute('href') === '/';
+
+    const dest = isHome ? 'index.html' : 'calendar.html';
+    const isDestHome = dest === 'index.html';
+    const isCurrentHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+
+    // When already on the SAME page: DO NOT play animation! Simply refresh/scroll to top
+    if ((isDestHome && isCurrentHome) || (!isDestHome && isCalendarHtmlPage)) {
+      if (window.scrollY > 30) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.location.reload();
+      }
+      return;
     }
+
+    // Navigating to a DIFFERENT page: Trigger animated logo sequence & video finish
+    calendarWipe.classList.remove('leaving');
+    calendarWipe.classList.add('entering');
+    
+    // Reset & re-trigger CSS animations on wipe layers
+    const elementsToReset = calendarWipe.querySelectorAll('.wipe-bg-charte, .wipe-logo-stage, .wipe-rotate-zoom-logo, .wipe-ground-shadow, .wipe-halo-teal, .wipe-halo-yellow, .wipe-video-last-impression');
+    elementsToReset.forEach(el => {
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = '';
+    });
+
+    // Play ultra-fast video finish excerpt (~1.6s)
+    const wipeVideo = calendarWipe.querySelector('.wipe-last-frame-video');
+    if (wipeVideo) {
+      wipeVideo.currentTime = 0;
+      wipeVideo.play().catch(() => {});
+      wipeVideo.onended = () => finishWipe(dest);
+    }
+
+    // Snappy fallback timer (1.85s)
+    wipeTimer = setTimeout(() => {
+      finishWipe(dest);
+    }, 1850);
   }
-});
+}, true);
 
 // -------------------------------------------------------------
 // ARTISTS ACCORDION HOVER / CLICK INTERACTION

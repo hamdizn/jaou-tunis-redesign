@@ -98,78 +98,99 @@ header.header-scrolled:not(.header-menu-open):not(.header-yellow) {
   transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-/* When Menu is Open: Header Background seamlessly merges into Menu Overlay in Deep Dark Real Photo Noir (#070A12) */
-header.header-menu-open {
-  background: #070A12 !important;
-  backdrop-filter: blur(25px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: none !important;
+/* When Menu is Open: Header Navbar is White on Home page, but STAYS Yellow on Calendar page */
+header.header-menu-open:not(.header-yellow) {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 header.header-menu-open .menu-btn,
-header.header-menu-open .lang-item,
 header.header-menu-open .icon-link,
 header.header-menu-open .text-line {
-  color: var(--jaou-white) !important;
+  color: var(--jaou-black) !important;
 }
 
-/* Calendar Button transformation when navbar is dark (Menu Open) */
-header.header-menu-open .calendar-btn {
-  background: var(--jaou-white) !important;
-  color: #070A12 !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+header.header-menu-open .lang-item {
+  color: var(--jaou-muted) !important;
 }
 
-header.header-menu-open .calendar-btn i {
-  color: #070A12 !important;
+header.header-menu-open .lang-item.active {
+  color: var(--jaou-black) !important;
+  border-bottom: 2px solid var(--jaou-teal) !important;
 }
 
-header.header-menu-open .calendar-btn:hover,
-header.header-menu-open .calendar-btn:active {
-  background: var(--jaou-black) !important;
-  color: var(--jaou-white) !important;
-}
-
-header.header-menu-open .calendar-btn:hover i,
-header.header-menu-open .calendar-btn:active i {
-  color: var(--jaou-white) !important;
-}
-
-header.header-menu-open .jaou-logo-svg {
-  fill: var(--jaou-white) !important;
-}
-
-header.header-menu-open .jaou-logo-img {
-  filter: brightness(0) invert(1) !important;
-}
-
-header.header-menu-open .burger-bar {
-  background-color: var(--jaou-white) !important;
-}
-
-/* Calendar Navbar (Yellow Header) */
-header.header-yellow:not(.header-menu-open) {
-  background: var(--jaou-yellow) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-}
-
-header.header-yellow:not(.header-menu-open) .calendar-btn {
+/* Calendar Button in White Navbar (Menu Open on Home page) */
+header.header-menu-open:not(.header-yellow) .calendar-btn {
   background: var(--jaou-black) !important;
   color: var(--jaou-white) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
 }
 
-header.header-yellow:not(.header-menu-open) .calendar-btn i {
+header.header-menu-open:not(.header-yellow) .calendar-btn i {
+  color: var(--jaou-white) !important;
+}
+
+header.header-menu-open:not(.header-yellow) .calendar-btn:hover,
+header.header-menu-open:not(.header-yellow) .calendar-btn:active {
+  background: var(--jaou-teal) !important;
+  color: var(--jaou-white) !important;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 14px rgba(20, 175, 167, 0.35) !important;
+}
+
+header.header-menu-open:not(.header-yellow) .calendar-btn:hover i,
+header.header-menu-open:not(.header-yellow) .calendar-btn:active i {
+  color: var(--jaou-white) !important;
+}
+
+header.header-menu-open .jaou-logo-svg {
+  fill: var(--jaou-black) !important;
+}
+
+header.header-menu-open .jaou-logo-img {
+  filter: none !important;
+}
+
+header.header-menu-open .burger-bar {
+  background-color: var(--jaou-black) !important;
+}
+
+/* Calendar Navbar (Yellow Header) - STAYS Yellow Even When Menu is Open */
+header.header-yellow,
+header.header-yellow.header-menu-open,
+header.header-yellow.header-scrolled {
+  background: var(--jaou-yellow) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+header.header-yellow .calendar-btn,
+header.header-yellow.header-menu-open .calendar-btn {
+  background: var(--jaou-black) !important;
+  color: var(--jaou-white) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+
+header.header-yellow .calendar-btn i,
+header.header-yellow.header-menu-open .calendar-btn i {
   color: var(--jaou-yellow) !important;
 }
 
-header.header-yellow:not(.header-menu-open) .calendar-btn:hover {
+header.header-yellow .calendar-btn:hover,
+header.header-yellow.header-menu-open .calendar-btn:hover {
   background: var(--jaou-teal) !important;
   color: var(--jaou-white) !important;
 }
 
-header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
+header.header-yellow .calendar-btn:hover i,
+header.header-yellow.header-menu-open .calendar-btn:hover i {
   color: var(--jaou-white) !important;
 }
 
@@ -421,7 +442,7 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   width: 100vw;
   height: 100vh;
   z-index: 900;
-  background: transparent;
+  background: rgba(3, 6, 12, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -448,7 +469,9 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   flex-direction: column;
   position: relative;
   z-index: 5;
-  background: #070A12 !important;
+  background: rgba(7, 10, 18, 0.78) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
   border-radius: 0 !important;
   padding: 80px 0 0 0 !important;
   border: none !important;
@@ -559,18 +582,20 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
 .menu-list-item {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 0.44rem 0.85rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0.52rem 0.85rem;
   border-radius: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   background: transparent;
   opacity: 0;
   transform: translateX(-35px);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.08s ease;
+              background 0.15s ease,
+              border-color 0.15s ease;
   will-change: transform, opacity;
 }
 
@@ -591,23 +616,45 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   border-bottom: none;
 }
 
-/* Instant reaction on hover with deep translucent contrast to make white text pop */
-.menu-list-item:hover {
-  background: rgba(0, 0, 0, 0.2) !important;
+/* Instant reaction on hover with subtle glass tint */
+.menu-list-item:hover,
+.menu-list-item:focus-within,
+.menu-list-item.active {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
   transform: translateX(4px) !important;
   transition-delay: 0s !important;
 }
 
-/* Category Head (Left Side) */
+/* Category Head (Main Option Row) */
 .list-category-head {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
   color: inherit;
-  flex-shrink: 0;
-  min-width: 235px;
+  width: 100%;
   cursor: pointer;
+  padding: 0.15rem 0;
+}
+
+/* Arrow indicator that rotates down when sub-options unfold */
+.list-category-head::after {
+  content: '›';
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.35);
+  margin-left: auto;
+  transform: rotate(0deg);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.menu-list-item:hover .list-category-head::after,
+.menu-list-item:focus-within .list-category-head::after,
+.menu-list-item.active .list-category-head::after {
+  transform: rotate(90deg);
+  color: #EED739;
 }
 
 .list-num {
@@ -617,10 +664,12 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   color: #EED739;
   min-width: 1.75rem;
   letter-spacing: 0.05em;
-  transition: color 0.08s ease, transform 0.08s ease;
+  transition: color 0.1s ease, transform 0.1s ease;
 }
 
-.menu-list-item:hover .list-num {
+.menu-list-item:hover .list-num,
+.menu-list-item:focus-within .list-num,
+.menu-list-item.active .list-num {
   color: #FFFFFF;
   transform: translateX(2px);
 }
@@ -635,24 +684,48 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   line-height: 1;
   white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-  transition: transform 0.08s ease;
+  transition: transform 0.1s ease;
 }
 
-.menu-list-item:hover .list-title {
-  color: #FFFFFF !important; /* Always crisp, 100% readable */
+.menu-list-item:hover .list-title,
+.menu-list-item:focus-within .list-title,
+.menu-list-item.active .list-title {
+  color: #FFFFFF !important;
   transform: translateX(3px);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Sub Options (Right Side Inline Pills) */
+/* Sub Options: Placed directly UNDERNEATH the option, revealed on hover */
 .list-sub-options {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 0.35rem 0.5rem;
-  padding-left: 0;
+  padding-left: 2.5rem; /* Aligned below the title, past the Roman numeral */
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   margin-top: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.25s ease;
+}
+
+.menu-list-item:hover .list-sub-options,
+.menu-list-item:focus-within .list-sub-options,
+.menu-list-item.active .list-sub-options {
+  max-height: 160px;
+  opacity: 1;
+  overflow: visible;
+  pointer-events: auto;
+  margin-top: 0.48rem;
+  margin-bottom: 0.22rem;
+  transform: translateY(0);
 }
 
 .list-sub-options a {
@@ -672,24 +745,18 @@ header.header-yellow:not(.header-menu-open) .calendar-btn:hover i {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  transform: scale(0.92) translateY(3px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  transform: scale(0.92) translateY(2px);
+  transition: opacity 0.22s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               background 0.08s ease, color 0.08s ease, border-color 0.08s ease, box-shadow 0.08s ease !important;
 }
 
-.menu-overlay.open .list-sub-options a {
+.menu-list-item:hover .list-sub-options a,
+.menu-list-item:focus-within .list-sub-options a,
+.menu-list-item.active .list-sub-options a {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
-
-.menu-overlay.open .menu-list-item:nth-child(1) .list-sub-options a { transition-delay: 0.18s; }
-.menu-overlay.open .menu-list-item:nth-child(2) .list-sub-options a { transition-delay: 0.23s; }
-.menu-overlay.open .menu-list-item:nth-child(3) .list-sub-options a { transition-delay: 0.28s; }
-.menu-overlay.open .menu-list-item:nth-child(4) .list-sub-options a { transition-delay: 0.33s; }
-.menu-overlay.open .menu-list-item:nth-child(5) .list-sub-options a { transition-delay: 0.38s; }
-.menu-overlay.open .menu-list-item:nth-child(6) .list-sub-options a { transition-delay: 0.43s; }
-.menu-overlay.open .menu-list-item:nth-child(7) .list-sub-options a { transition-delay: 0.48s; }
 
 .list-sub-options a:hover {
   color: #070A12 !important; /* Real photo dark tone on pure white */
@@ -2720,7 +2787,9 @@ footer {
   height: 100vh;
   pointer-events: none;
   z-index: 1;
-  filter: blur(3px);
+  filter: blur(5px);
+  transform: scale(1.02);
+  opacity: 0.92;
 }
 
 .agenda-main-container {
@@ -2738,6 +2807,44 @@ footer {
   gap: 3.5rem;
   align-items: start;
   margin-bottom: 3.5rem;
+}
+
+/* Festival Period Badge (23 Oct — 22 Nov) */
+.festival-period-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  background: rgba(255, 249, 173, 0.75);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.festival-period-badge i {
+  color: #14AFA7;
+  font-size: 0.92rem;
+}
+
+.festival-period-badge .badge-dot {
+  color: #14AFA7;
+  font-weight: 900;
+  margin: 0 0.15rem;
+}
+
+.festival-period-badge .badge-highlight {
+  color: #000000;
+  font-weight: 900;
 }
 
 .agenda-page-title {
@@ -3083,7 +3190,73 @@ footer {
 .ticket-btn:hover {
   background: #000000;
   color: #FFFFFF;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Color-coded Ticket Buttons based on Announcement Category */
+.agenda-event-row[data-category="performance"] .ticket-btn,
+.ticket-btn.ticket-performance {
+  background: #DC2626 !important;
+  border-color: #DC2626 !important;
+  color: #FFFFFF !important;
+}
+.agenda-event-row[data-category="performance"] .ticket-btn:hover,
+.ticket-btn.ticket-performance:hover {
+  background: #B91C1C !important;
+  border-color: #B91C1C !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.agenda-event-row[data-category="concert"] .ticket-btn,
+.ticket-btn.ticket-concert {
+  background: #14AFA7 !important;
+  border-color: #14AFA7 !important;
+  color: #FFFFFF !important;
+}
+.agenda-event-row[data-category="concert"] .ticket-btn:hover,
+.ticket-btn.ticket-concert:hover {
+  background: #0D8F88 !important;
+  border-color: #0D8F88 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 5px 16px rgba(20, 175, 167, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.agenda-event-row[data-category="exhibition"] .ticket-btn,
+.ticket-btn.ticket-exhibition {
+  background: #E54D8A !important;
+  border-color: #E54D8A !important;
+  color: #FFFFFF !important;
+}
+.agenda-event-row[data-category="exhibition"] .ticket-btn:hover,
+.ticket-btn.ticket-exhibition:hover {
+  background: #C22B69 !important;
+  border-color: #C22B69 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 5px 16px rgba(229, 77, 138, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.agenda-event-row[data-category="encounter"] .ticket-btn,
+.agenda-event-row[data-category="talk"] .ticket-btn,
+.ticket-btn.ticket-encounter,
+.ticket-btn.ticket-talk {
+  background: #EAB308 !important;
+  border-color: #EAB308 !important;
+  color: #000000 !important;
+}
+.agenda-event-row[data-category="encounter"] .ticket-btn:hover,
+.agenda-event-row[data-category="talk"] .ticket-btn:hover,
+.ticket-btn.ticket-encounter:hover,
+.ticket-btn.ticket-talk:hover {
+  background: #CA8A04 !important;
+  border-color: #CA8A04 !important;
+  color: #000000 !important;
+  box-shadow: 0 5px 16px rgba(234, 179, 8, 0.45) !important;
+  transform: translateY(-2px);
 }
 
 .empty-schedule-msg {
@@ -3271,8 +3444,8 @@ footer {
 }
 
 /* =============================================================
-   CINEMATIC CALENDAR PAGE TRANSITION (Art Wipe Curtain)
-   Signature Jaou Dual-Layer (Sarcelle #14AFA7 + Jaou Jaune #EED739)
+   CINEMATIC 1-SECOND LOGO ANIMATION (Calendar Transition)
+   Charter Background (Jaou Yellow #FEF8D6) + Rotating & Zooming Logo
 ============================================================= */
 .calendar-page-wipe {
   position: fixed;
@@ -3283,6 +3456,9 @@ footer {
   pointer-events: none;
   visibility: hidden;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar-page-wipe.entering,
@@ -3291,144 +3467,315 @@ footer {
   visibility: visible;
 }
 
-/* Layer 1: Jaou Teal / Sarcelle Méditerranée */
-.calendar-page-wipe .wipe-layer.wipe-teal {
+/* Background according to Jaou Brand Charter (#FEF8D6 + Solaire + Halos Sarcelle & Or) */
+.calendar-page-wipe .wipe-bg-charte {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: #14AFA7;
-  transform: translateY(100%);
-  will-change: transform;
+  background: radial-gradient(circle at 50% 50%, #FFFDEB 0%, var(--jaou-yellow) 55%, #F4E8A6 100%);
+  overflow: hidden;
+  opacity: 0;
+  will-change: clip-path, transform, opacity;
 }
 
-/* Layer 2: Signature Jaou Yellow */
-.calendar-page-wipe .wipe-layer.wipe-yellow {
+.calendar-page-wipe.entering .wipe-bg-charte {
+  animation: wipeCanvasIrisReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.calendar-page-wipe.leaving .wipe-bg-charte {
+  animation: wipeCanvasIrisExit 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wipeCanvasIrisReveal {
+  0% {
+    opacity: 0;
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(1.12);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: circle(150% at 50% 50%);
+    transform: scale(1);
+  }
+}
+
+@keyframes wipeCanvasIrisExit {
+  0% {
+    opacity: 1;
+    clip-path: circle(150% at 50% 50%);
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    clip-path: circle(150% at 50% 50%);
+    transform: scale(1.06);
+    filter: blur(12px);
+  }
+}
+
+/* Halos d'ambiance selon la charte (Sarcelle #14AFA7 & Or #EED739) */
+.calendar-page-wipe .wipe-halo-teal {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: #EED739;
-  transform: translateY(100%);
-  will-change: transform;
-  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.12);
+  top: 50%;
+  left: 50%;
+  width: clamp(350px, 45vw, 650px);
+  height: clamp(350px, 45vw, 650px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(20, 175, 167, 0.14) 0%, transparent 68%);
+  filter: blur(45px);
+  pointer-events: none;
+  border-radius: 50%;
 }
 
-/* ENTERING STATE: Upward sweep from bottom covering the screen */
-.calendar-page-wipe.entering .wipe-teal {
-  transform: translateY(0);
-  transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+.calendar-page-wipe.entering .wipe-halo-teal {
+  animation: haloBloomTeal 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards, charterHaloBreathe 3s infinite ease-in-out alternate 0.38s;
 }
 
-.calendar-page-wipe.entering .wipe-yellow {
-  transform: translateY(0);
-  transition: transform 0.48s cubic-bezier(0.77, 0, 0.175, 1) 0.05s;
-}
-
-/* LEAVING STATE: Upward lift unveiling the calendar page from bottom to top */
-.calendar-page-wipe.leaving .wipe-yellow {
-  transform: translateY(-100%);
-  transition: transform 0.52s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.calendar-page-wipe.leaving .wipe-teal {
-  transform: translateY(-100%);
-  transition: transform 0.48s cubic-bezier(0.77, 0, 0.175, 1) 0.06s;
-}
-
-/* Center Content: Typography & Biennial Tag */
-.calendar-page-wipe .wipe-content {
+.calendar-page-wipe .wipe-halo-yellow {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: clamp(450px, 60vw, 850px);
+  height: clamp(450px, 60vw, 850px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(238, 215, 57, 0.22) 0%, transparent 70%);
+  filter: blur(55px);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.calendar-page-wipe.entering .wipe-halo-yellow {
+  animation: haloBloomYellow 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards, charterHaloBreathe 3s infinite ease-in-out alternate-reverse 0.38s;
+}
+
+@keyframes haloBloomTeal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes haloBloomYellow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes charterHaloBreathe {
+  0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.18); opacity: 0.95; }
+}
+
+/* Center Stage: Rotating Logo + Real Physical Ground Shadow */
+.calendar-page-wipe .wipe-logo-stage {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  text-align: center;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
+  will-change: transform, opacity, filter;
 }
 
-.calendar-page-wipe.entering .wipe-content {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.35s ease 0.15s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+.calendar-page-wipe.entering .wipe-logo-stage {
+  animation: wipeStageBloomIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.calendar-page-wipe.leaving .wipe-content {
-  opacity: 0;
-  transform: translateY(-25px);
-  transition: opacity 0.2s ease, transform 0.25s ease;
+@keyframes wipeStageBloomIn {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
-.calendar-page-wipe .wipe-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1rem;
-  background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 999px;
-  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #121316;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-}
-
-.calendar-page-wipe .wipe-dot {
-  width: 7px;
-  height: 7px;
-  background: #14AFA7;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #14AFA7;
-  animation: wipeDotPulse 1.2s infinite ease-in-out;
-}
-
-@keyframes wipeDotPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-}
-
-.calendar-page-wipe .wipe-title-wrap {
-  overflow: hidden;
-  margin-bottom: 0.8rem;
-}
-
-.calendar-page-wipe .wipe-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  color: #121316;
-  text-transform: uppercase;
-  line-height: 1.05;
-  margin: 0;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
-}
-
-.calendar-page-wipe .wipe-dates {
+.calendar-page-wipe .wipe-logo-center {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
-  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
-  font-size: clamp(0.78rem, 1.6vw, 0.95rem);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: rgba(18, 19, 22, 0.82);
-  text-transform: uppercase;
 }
 
-.calendar-page-wipe .wipe-sep {
-  color: #14AFA7;
-  font-weight: 900;
+/* Logo: Continuous uninterrupted rotation + progressive zoom (1s) + Deep Real Shadow */
+.calendar-page-wipe .wipe-rotate-zoom-logo {
+  height: clamp(110px, 16vw, 175px);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.36)) drop-shadow(0 8px 15px rgba(0, 0, 0, 0.22));
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.calendar-page-wipe.entering .wipe-rotate-zoom-logo {
+  animation: logoContinuousSpin1s 1s linear forwards;
+}
+
+.calendar-page-wipe.leaving .wipe-rotate-zoom-logo {
+  animation: logoExitZoom 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes logoExitZoom {
+  0% {
+    opacity: 1;
+    transform: scale(1.38) rotate(360deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.65) rotate(420deg);
+    filter: blur(12px);
+  }
+}
+
+/* Tactile Launch Animation for Calendar Triggers */
+.calendar-btn-launching {
+  animation: calendarBtnLaunchPulse 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes calendarBtnLaunchPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.92); filter: brightness(1.2); }
+  100% { transform: scale(1.05); filter: brightness(1); }
+}
+
+/* Rotation CONTINUE sans arrêt (vitesse linéaire constante sur 1s) + Zoom avant */
+@keyframes logoContinuousSpin1s {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(0.6) rotate(50deg);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(0.85) rotate(120deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12) rotate(225deg);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1.28) rotate(315deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.38) rotate(360deg);
+  }
+}
+
+/* Ombre portée au sol sous le logo en rotation */
+.calendar-page-wipe .wipe-ground-shadow {
+  width: clamp(160px, 22vw, 260px);
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 50%, transparent 75%);
+  filter: blur(10px);
+  margin-top: 1.2rem;
+  opacity: 0;
+  transform: scale(0.35);
+  pointer-events: none;
+}
+
+.calendar-page-wipe.entering .wipe-ground-shadow {
+  animation: groundShadowExpand1s 1s linear forwards;
+}
+
+@keyframes groundShadowExpand1s {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  15% {
+    opacity: 0.85;
+    transform: scale(0.65);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.0);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.35);
+  }
+}
+
+/* Final Impression of the Video (Appears at the Finish of the Animation - 0:18 to 0:25) */
+.calendar-page-wipe .wipe-video-last-impression {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF9AD;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: opacity, transform;
+}
+
+.calendar-page-wipe .wipe-last-frame-video,
+.calendar-page-wipe .wipe-last-frame-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 100vw;
+  max-height: 100vh;
+  display: block;
+}
+
+/* Appears smoothly at the finish of the intro (at 0.2s) */
+.calendar-page-wipe.entering .wipe-video-last-impression {
+  animation: videoFinishImpressionIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes videoFinishImpressionIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.calendar-page-wipe.leaving .wipe-video-last-impression {
+  animation: videoFinishImpressionExit 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes videoFinishImpressionExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: blur(8px);
+  }
 }
 
 /* =============================================================

@@ -898,7 +898,9 @@ export default function CalendarPage() {
           <div className="agenda-left-col">
             <div className="festival-period-badge">
               <i className="fa-regular fa-calendar-check"></i>
-              <span>23 OCTOBRE — 22 NOVEMBRE 2026 • 31 JOURS D'ART</span>
+              <span>23 OCTOBRE — 22 NOVEMBRE 2026</span>
+              <span className="badge-dot">•</span>
+              <span className="badge-highlight">31 JOURS D'ART</span>
             </div>
 
             <h1 className="agenda-page-title">CALENDAR</h1>
@@ -1062,7 +1064,7 @@ export default function CalendarPage() {
                 {/* EVENTS FOR THIS DAY */}
                 <div className="agenda-events-list">
                   {dayGroup.events.map(ev => (
-                    <article key={ev.id} className="agenda-event-row">
+                    <article key={ev.id} className="agenda-event-row" data-category={ev.category}>
                       
                       {/* EVENT DETAILS (LEFT) */}
                       <div className="agenda-event-details">
@@ -1081,7 +1083,15 @@ export default function CalendarPage() {
 
                       {/* ACTION BUTTON (RIGHT) */}
                       <div className="agenda-event-action">
-                        <a href={ev.ticketUrl} className="ticket-btn">
+                        <a 
+                          href={ev.ticketUrl} 
+                          className={`ticket-btn ticket-${ev.category}`}
+                          style={{
+                            backgroundColor: ev.categoryColor,
+                            borderColor: ev.categoryColor,
+                            color: (ev.category === 'encounter' || ev.category === 'talk') ? '#000000' : '#FFFFFF'
+                          }}
+                        >
                           GET YOUR TICKET
                         </a>
                       </div>
