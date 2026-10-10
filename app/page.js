@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -9,6 +10,7 @@ export default function Home() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [registerSubmitted, setRegisterSubmitted] = useState(false);
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [isPhotoFlipped, setIsPhotoFlipped] = useState(false);
   const videoRef = useRef(null);
 
   const playVideoCycle = () => {
@@ -101,20 +103,84 @@ export default function Home() {
             <p className="reveal-on-scroll reveal-delay-1">
               Presented within the nineteenth-century Caserne El Attarine in the Medina of Tunis, the exhibition is accompanied by collateral exhibitions, performances, concerts, Jaou Nights, workshops, a symposium and city-wide encounters that invite visitors to experience Tunis through art, conversation and hospitality.
             </p>
+          </div>
+        </section>
 
-            {/* INTERACTIVE QUOTE SPOTLIGHT CARD (2D Scroll Slide-in, 3D Flip on Hover Only) */}
-            <div className="quote-card-wrapper reveal-slide-right">
-              <div className="quote-card-container">
-                <div className="quote-flip-card">
-                  <div className="quote-card-front">
-                    <img src="/watermelon-boy.png" alt="An Exploration of Resistance as the Deepest Form of Love" />
+        {/* SPOTLIGHT SECTION: Photo a gauche, Ecriture a droite avec bouton Explorer le calendrier et animations */}
+        <section className="home-spotlight-section">
+          <div className="home-spotlight-container">
+            
+            {/* PHOTO A GAUCHE (Survol affiche le message en flip 3D) */}
+            <div className="home-spotlight-photo-col reveal-slide-left">
+              <div 
+                className="spotlight-photo-flip-card"
+                onClick={() => setIsPhotoFlipped(!isPhotoFlipped)}
+              >
+                <div className={`spotlight-photo-flip-inner ${isPhotoFlipped ? 'is-flipped' : ''}`}>
+                  {/* Face avant : La Photo */}
+                  <div className="spotlight-photo-front">
+                    <img 
+                      src="/watermelon-boy.png" 
+                      alt="Biennale Archipel - Watermelon Boy" 
+                      className="spotlight-photo-img"
+                    />
+                    <div className="spotlight-photo-hint">
+                      <i className="fa-solid fa-arrow-rotate-right"></i>
+                      <span>Survoler la photo</span>
+                    </div>
                   </div>
-                  <div className="quote-card-back">
-                    <h3>AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'</h3>
+                  {/* Face arrière : Message affiche au survol */}
+                  <div className="spotlight-photo-back">
+                    <span className="photo-back-tag">JAOU TUNIS &rsquo;26</span>
+                    <h3 className="photo-back-quote">
+                      AN EXPLORATION OF &lsquo;RESISTANCE AS THE DEEPEST FORM OF LOVE&rsquo;
+                    </h3>
+                    <p className="photo-back-sub">BIENNALE ARCHIPEL &bull; TUNIS</p>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* ECRITURE A DROITE SANS CADRE */}
+            <div className="home-spotlight-text-col reveal-slide-right">
+              <div className="home-spotlight-clean-text">
+                
+                <div className="spotlight-tag-row">
+                  <span className="spotlight-tag-pill">
+                    <span className="pixel-dot-accent"></span> JAOU TUNIS &rsquo;26
+                  </span>
+                  <span className="spotlight-cat-pill">BIENNALE ARCHIPEL</span>
+                </div>
+
+                <h2 className="spotlight-title">
+                  AN EXPLORATION OF &lsquo;RESISTANCE AS THE DEEPEST FORM OF LOVE&rsquo;
+                </h2>
+
+                <p className="spotlight-description">
+                  Au cœur de la Biennale Archipel, une traversée curatoriale majeure inspirée par la pensée de Khalil Gibran. Une exploration poétique et engagée des solidarités, de la mémoire et de la transformation contemporaine.
+                </p>
+
+                <div className="spotlight-meta-info">
+                  <div className="spotlight-meta-item">
+                    <i className="fa-regular fa-calendar-days"></i>
+                    <span>23 Octobre — 22 Novembre 2026</span>
+                  </div>
+                  <div className="spotlight-meta-item">
+                    <i className="fa-solid fa-location-dot"></i>
+                    <span>Caserne El Attarine &bull; Médina de Tunis</span>
+                  </div>
+                </div>
+
+                <div className="spotlight-cta-wrap">
+                  <Link href="/calendar" className="spotlight-calendar-btn">
+                    <span>EXPLORER LE CALENDRIER</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </section>
 

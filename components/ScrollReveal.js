@@ -25,7 +25,7 @@ export default function ScrollReveal({ children }) {
       });
     }, scrollObserverOptions);
 
-    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-right, .video-frame, .reveal-form-card');
+    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-left, .reveal-slide-right, .video-frame, .reveal-form-card');
     elements.forEach(el => scrollObserver.observe(el));
 
     return () => {

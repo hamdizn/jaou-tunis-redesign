@@ -65,125 +65,157 @@
 
   <!-- Full-Screen Animated Menu Overlay -->
   <div class="menu-overlay" id="menuOverlay">
-    <!-- Full-Screen Ambient Molecular Background Canvas -->
-    <canvas id="moleculeCanvas" class="menu-bg-canvas"></canvas>
-
     <div class="menu-list-container">
-      <ul class="menu-vertical-list">
+      <!-- Creative Topbar inside Menu -->
+      <div class="menu-container-topbar">
+        <div class="menu-topbar-tag">
+          <span class="menu-topbar-dot"></span>
+          <span>JAOU TUNIS 2026 // INDEX BIENNALE ARCHIPEL</span>
+        </div>
+        <div class="menu-topbar-meta">
+          <span>23 OCT — 22 NOV 2026</span>
+          <span class="meta-sep">•</span>
+          <span>MÉDINA DE TUNIS</span>
+        </div>
+      </div>
 
-        <!-- I ABOUT US -->
-        <li class="menu-list-item" data-num="I" data-title="ABOUT US" data-tag="KLF & FOUNDATION"
-          data-icon="fa-solid fa-landmark"
-          data-desc="Découvrez la Fondation Kamel Lazaar (KLF) et l'histoire de Jaou Tunis dans le développement des arts contemporains en Afrique du Nord."
-          data-gradient="linear-gradient(135deg, #14AFA7 0%, #0B6B66 100%)">
-          <a href="#edito" class="list-category-head">
-            <span class="list-num">I.</span>
-            <span class="list-title">ABOUT US</span>
-          </a>
-          <div class="list-sub-options">
-            <a href="#edito">&#123; Jaou Tunis &#125;</a>
-            <a href="https://www.kamellazaarfoundation.org/" target="_blank">&#123; KLF &#125;</a>
-          </div>
-        </li>
+      <div class="menu-content-split">
 
-        <!-- II JAOU TUNIS'26 -->
-        <li class="menu-list-item" data-num="II" data-title="JAOU TUNIS'26" data-tag="BIENNALE ARCHIPEL"
-          data-icon="fa-solid fa-compass-drafting"
-          data-desc="Explorez la programmation générale : expositions, concerts live, performances artistiques et calendrier à travers la ville de Tunis."
-          data-gradient="linear-gradient(135deg, #14AFA7 0%, #064E3B 100%)">
-          <a href="calendar.html" class="list-category-head">
-            <span class="list-num">II.</span>
-            <span class="list-title">JAOU TUNIS'26</span>
-          </a>
-          <div class="list-sub-options">
-            <a href="calendar.html">&#123; Archipelago Biennale &#125;</a>
-            <a href="calendar.html">&#123; Exhibitions &#125;</a>
-            <a href="calendar.html">&#123; Concerts &#125;</a>
-            <a href="calendar.html">&#123; Performances &#125;</a>
-            <a href="calendar.html">&#123; Calendar &#125;</a>
-          </div>
-        </li>
+        <!-- Left Column: Menu Items -->
+        <div class="menu-nav-column">
+          <ul class="menu-vertical-list" id="menuVerticalList">
 
-        <!-- III BIM'26 -->
-        <li class="menu-list-item" data-num="III" data-title="BIM'26" data-tag="BECOMING THE OCEAN"
-          data-icon="fa-solid fa-water"
-          data-desc="La Biennale de l'Image en Mouvement présente 'Becoming the Ocean' avec 16 artistes internationaux à la Caserne El Attarine."
-          data-gradient="linear-gradient(135deg, #0284C7 0%, #0F172A 100%)">
-          <a href="calendar.html" class="list-category-head">
-            <span class="list-num">III.</span>
-            <span class="list-title">BIM'26</span>
-          </a>
-          <div class="list-sub-options">
-            <a href="calendar.html">&#123; About BIM'26 &#125;</a>
-            <a href="calendar.html">&#123; Becoming the Ocean &#125;</a>
-            <a href="calendar.html">&#123; Artists &#125;</a>
-            <a href="calendar.html">&#123; Venue &#125;</a>
-          </div>
-        </li>
+            <!-- I ABOUT US -->
+            <li class="menu-list-item">
+              <a href="#edito" class="list-category-head">
+                <span class="list-num">I.</span>
+                <span class="list-title">ABOUT US</span>
+              </a>
+              <div class="list-sub-options">
+                <a href="#edito">Jaou Tunis</a>
+                <a href="https://www.kamellazaarfoundation.org/" target="_blank">KLF Foundation</a>
+              </div>
+            </li>
 
-        <!-- IV ART EXPLORA FESTIVAL -->
-        <li class="menu-list-item" data-num="IV" data-title="ART EXPLORA FESTIVAL" data-tag="FESTIVAL MÉRIDIONAL"
-          data-icon="fa-solid fa-ship"
-          data-desc="Le bateau-musée d'Art Explora clôture sa tournée méditerranéenne à Tunis avec des expositions immersives et concerts."
-          data-gradient="linear-gradient(135deg, #EC4899 0%, #831843 100%)">
-          <a href="calendar.html" class="list-category-head">
-            <span class="list-num">IV.</span>
-            <span class="list-title">ART EXPLORA FESTIVAL</span>
-          </a>
-          <div class="list-sub-options">
-            <a href="calendar.html">&#123; About the Festival &#125;</a>
-            <a href="calendar.html">&#123; Undertow / Contre;Courant &#125;</a>
-            <a href="calendar.html">&#123; Related Programme &#125;</a>
-          </div>
-        </li>
+            <!-- II JAOU TUNIS'26 -->
+            <li class="menu-list-item">
+              <a href="calendar.html" class="list-category-head">
+                <span class="list-num">II.</span>
+                <span class="list-title">JAOU TUNIS'26</span>
+              </a>
+              <div class="list-sub-options">
+                <a href="calendar.html">Archipelago Biennale</a>
+                <a href="calendar.html">Exhibitions</a>
+                <a href="calendar.html">Concerts</a>
+                <a href="calendar.html">Performances</a>
+                <a href="calendar.html">Calendar</a>
+              </div>
+            </li>
 
-        <!-- V PARTNERS -->
-        <li class="menu-list-item" data-num="V" data-title="PARTNERS" data-tag="RÉSEAU INTERNATIONAL"
-          data-icon="fa-solid fa-handshake"
-          data-desc="Partenariats majeurs avec le Centre d'Art Contemporain Genève, la Fondation Art Explora et nos mécènes institutionnels."
-          data-gradient="linear-gradient(135deg, #10B981 0%, #064E3B 100%)">
-          <div class="list-category-head">
-            <span class="list-num">V.</span>
-            <span class="list-title">PARTNERS</span>
-          </div>
-          <div class="list-sub-options">
-            <a href="https://centre.ch/fr" target="_blank">&#123; Centre d'Art Contemporain Genève &#125;</a>
-            <a href="https://www.artexplora.org/" target="_blank">&#123; Art Explora &#125;</a>
-          </div>
-        </li>
+            <!-- III BIM'26 -->
+            <li class="menu-list-item">
+              <a href="calendar.html" class="list-category-head">
+                <span class="list-num">III.</span>
+                <span class="list-title">BIM'26</span>
+              </a>
+              <div class="list-sub-options">
+                <a href="calendar.html">About BIM'26</a>
+                <a href="calendar.html">Becoming the Ocean</a>
+                <a href="calendar.html">Artists</a>
+                <a href="calendar.html">Venue</a>
+              </div>
+            </li>
 
-        <!-- VI MEDIA -->
-        <li class="menu-list-item" data-num="VI" data-title="MEDIA" data-tag="PRESSE & REVIEWS"
-          data-icon="fa-solid fa-newspaper"
-          data-desc="Téléchargez le dossier de presse officiel, consultez les retombées médias internationales et les répertoires photos."
-          data-gradient="linear-gradient(135deg, #8B5CF6 0%, #4C1D95 100%)">
-          <div class="list-category-head">
-            <span class="list-num">VI.</span>
-            <span class="list-title">MEDIA</span>
-          </div>
-          <div class="list-sub-options">
-            <a href="#">&#123; Press Kit &#125;</a>
-            <a href="#">&#123; They Talked About Us &#125;</a>
-          </div>
-        </li>
+            <!-- IV ART EXPLORA FESTIVAL -->
+            <li class="menu-list-item">
+              <a href="calendar.html" class="list-category-head">
+                <span class="list-num">IV.</span>
+                <span class="list-title">ART EXPLORA FESTIVAL</span>
+              </a>
+              <div class="list-sub-options">
+                <a href="calendar.html">About the Festival</a>
+                <a href="calendar.html">Undertow / Contre-Courant</a>
+                <a href="calendar.html">Related Programme</a>
+              </div>
+            </li>
 
-        <!-- VII PRACTICAL INFORMATION -->
-        <li class="menu-list-item" data-num="VII" data-title="PRACTICAL INFORMATION" data-tag="GUIDE DU VISITEUR"
-          data-icon="fa-solid fa-map-location-dot"
-          data-desc="Cartographie interactive de la Médina, accès aux lieux d'exposition, horaires, transports et FAQ."
-          data-gradient="linear-gradient(135deg, #F59E0B 0%, #78350F 100%)">
-          <a href="calendar.html" class="list-category-head">
-            <span class="list-num">VII.</span>
-            <span class="list-title">PRACTICAL INFORMATION</span>
-          </a>
-          <div class="list-sub-options">
-            <a href="calendar.html">&#123; Map &#125;</a>
-            <a href="calendar.html">&#123; FAQs &#125;</a>
-            <a href="calendar.html">&#123; Search &#125;</a>
-          </div>
-        </li>
-      </ul>
+            <!-- V PARTNERS -->
+            <li class="menu-list-item">
+              <div class="list-category-head">
+                <span class="list-num">V.</span>
+                <span class="list-title">PARTNERS</span>
+              </div>
+              <div class="list-sub-options">
+                <a href="https://centre.ch/fr" target="_blank">Centre d'Art Contemporain Genève</a>
+                <a href="https://www.artexplora.org/" target="_blank">Art Explora</a>
+              </div>
+            </li>
 
+            <!-- VI MEDIA -->
+            <li class="menu-list-item">
+              <div class="list-category-head">
+                <span class="list-num">VI.</span>
+                <span class="list-title">MEDIA</span>
+              </div>
+              <div class="list-sub-options">
+                <a href="#">Press Kit</a>
+                <a href="#">They Talked About Us</a>
+              </div>
+            </li>
+
+            <!-- VII PRACTICAL INFORMATION -->
+            <li class="menu-list-item">
+              <a href="calendar.html" class="list-category-head">
+                <span class="list-num">VII.</span>
+                <span class="list-title">PRACTICAL INFORMATION</span>
+              </a>
+              <div class="list-sub-options">
+                <a href="calendar.html">Map</a>
+                <a href="calendar.html">FAQs</a>
+                <a href="calendar.html">Search</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Photo Spotlight Card -->
+        <div class="menu-photo-column">
+          <div class="menu-spotlight-card">
+            <div class="menu-photo-img-wrap">
+              <img src="watermelon-boy.png" alt="Jaou Tunis '26 - Watermelon Boy" />
+              <span class="menu-photo-live-badge">FOCUS BIENNALE</span>
+            </div>
+            <div class="menu-photo-info">
+              <div class="menu-photo-tag-row">
+                <span class="menu-photo-tag">JAOU TUNIS '26</span>
+                <span class="menu-photo-cat">BIENNALE ARCHIPEL</span>
+              </div>
+              <h4 class="menu-photo-quote">
+                AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
+              </h4>
+              <p class="menu-photo-date">
+                <i class="fa-regular fa-calendar"></i> 23 Octobre — 22 Novembre 2026 • Tunis
+              </p>
+              <a href="calendar.html" class="menu-photo-link">
+                <span>Explorer le Calendrier</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Creative Bottombar inside Menu -->
+      <div class="menu-container-bottombar">
+        <div class="menu-bottom-partners">
+          <span>KAMEL LAZAAR FOUNDATION</span>
+          <span class="meta-sep">/</span>
+          <span>CAC GENÈVE</span>
+          <span class="meta-sep">/</span>
+          <span>ART EXPLORA</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -227,20 +259,81 @@
           Medina of Tunis, the exhibition is accompanied by collateral exhibitions, performances, concerts, Jaou Nights,
           workshops, a symposium and city-wide encounters that invite visitors to experience Tunis through art,
           conversation and hospitality.</p>
+      </div>
+    </section>
 
-        <!-- Interactive Quote Spotlight Card (2D Scroll Slide-in, 3D Flip on Hover Only) -->
-        <div class="quote-card-wrapper reveal-slide-right">
-          <div class="quote-card-container">
-            <div class="quote-flip-card">
-              <div class="quote-card-front">
-                <img src="watermelon-boy.png" alt="An Exploration of Resistance as the Deepest Form of Love" />
+    <!-- SPOTLIGHT SECTION: Photo a gauche, Ecriture a droite avec bouton Explorer le calendrier et animations -->
+    <section class="home-spotlight-section">
+      <div class="home-spotlight-container">
+        
+        <!-- PHOTO A GAUCHE (Survol affiche le message en flip 3D) -->
+        <div class="home-spotlight-photo-col reveal-slide-left">
+          <div class="spotlight-photo-flip-card" id="spotlightPhotoFlip">
+            <div class="spotlight-photo-flip-inner">
+              <!-- Face avant : La Photo -->
+              <div class="spotlight-photo-front">
+                <img 
+                  src="watermelon-boy.png" 
+                  alt="Biennale Archipel - Watermelon Boy" 
+                  class="spotlight-photo-img"
+                />
+                <div class="spotlight-photo-hint">
+                  <i class="fa-solid fa-arrow-rotate-right"></i>
+                  <span>Survoler la photo</span>
+                </div>
               </div>
-              <div class="quote-card-back">
-                <h3>AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'</h3>
+              <!-- Face arrière : Message affiche au survol -->
+              <div class="spotlight-photo-back">
+                <span class="photo-back-tag">JAOU TUNIS '26</span>
+                <h3 class="photo-back-quote">
+                  AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
+                </h3>
+                <p class="photo-back-sub">BIENNALE ARCHIPEL • TUNIS</p>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- ECRITURE A DROITE SANS CADRE -->
+        <div class="home-spotlight-text-col reveal-slide-right">
+          <div class="home-spotlight-clean-text">
+            
+            <div class="spotlight-tag-row">
+              <span class="spotlight-tag-pill">
+                <span class="pixel-dot-accent"></span> JAOU TUNIS '26
+              </span>
+              <span class="spotlight-cat-pill">BIENNALE ARCHIPEL</span>
+            </div>
+
+            <h2 class="spotlight-title">
+              AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'
+            </h2>
+
+            <p class="spotlight-description">
+              Au cœur de la Biennale Archipel, une traversée curatoriale majeure inspirée par la pensée de Khalil Gibran. Une exploration poétique et engagée des solidarités, de la mémoire et de la transformation contemporaine.
+            </p>
+
+            <div class="spotlight-meta-info">
+              <div class="spotlight-meta-item">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>23 Octobre — 22 Novembre 2026</span>
+              </div>
+              <div class="spotlight-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Caserne El Attarine • Médina de Tunis</span>
+              </div>
+            </div>
+
+            <div class="spotlight-cta-wrap">
+              <a href="calendar.html" class="spotlight-calendar-btn">
+                <span>EXPLORER LE CALENDRIER</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 

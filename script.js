@@ -19,6 +19,18 @@ logoHomeLinks.forEach(link => {
   });
 });
 
+if (header) {
+  const handleScroll = () => {
+    if (window.scrollY > 30) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
 // Hero Image (5s) <-> Video Cycle
 const heroImg = document.getElementById('heroImage');
 const heroVideo = document.getElementById('heroVideo');
@@ -177,12 +189,49 @@ if (canvas) {
     mouse.isOver = false;
   });
 
-  // Accelerate molecules briefly when hovering menu items
+  // Update photo card dynamically on hover
+  const photoTag = document.getElementById('menuPhotoTag');
+  const photoTitle = document.getElementById('menuPhotoTitle');
+  const photoDesc = document.getElementById('menuPhotoDesc');
+  const defaultCard = {
+    tag: 'BIENNALE ARCHIPEL',
+    title: "AN EXPLORATION OF 'RESISTANCE AS THE DEEPEST FORM OF LOVE'",
+    desc: '23 Octobre — 22 Novembre 2026 • Tunis'
+  };
+
+  // Accelerate molecules briefly and update featured photo card when hovering menu items
   document.querySelectorAll('.menu-list-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
       speedMultiplier = 2.5;
       setTimeout(() => { speedMultiplier = 1; }, 500);
+
+      if (photoTag && photoTitle && photoDesc) {
+        const tag = item.getAttribute('data-tag');
+        const title = item.getAttribute('data-title');
+        const desc = item.getAttribute('data-desc');
+        if (tag) photoTag.textContent = tag;
+        if (title) photoTitle.textContent = title;
+        if (desc) photoDesc.textContent = desc;
+      }
     });
+  });
+
+  const menuVertList = document.getElementById('menuVerticalList');
+  if (menuVertList && photoTag && photoTitle && photoDesc) {
+    menuVertList.addEventListener('mouseleave', () => {
+      photoTag.textContent = defaultCard.tag;
+      photoTitle.textContent = defaultCard.title;
+      photoDesc.textContent = defaultCard.desc;
+    });
+  }
+}
+
+// Toggle photo flip card on click/tap
+const spotlightPhotoFlip = document.getElementById('spotlightPhotoFlip');
+if (spotlightPhotoFlip) {
+  spotlightPhotoFlip.addEventListener('click', () => {
+    const inner = spotlightPhotoFlip.querySelector('.spotlight-photo-flip-inner');
+    if (inner) inner.classList.toggle('is-flipped');
   });
 }
 
@@ -315,7 +364,7 @@ const scrollObserver = new IntersectionObserver((entries, observer) => {
   });
 }, scrollObserverOptions);
 
-document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-right, .video-frame, .reveal-form-card').forEach(el => {
+document.querySelectorAll('.reveal-on-scroll, .reveal-zoom, .reveal-slide-left, .reveal-slide-right, .video-frame, .reveal-form-card').forEach(el => {
   scrollObserver.observe(el);
 });
 

@@ -1,14 +1,31 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Header({ menuOpen, setMenuOpen }) {
   const pathname = usePathname();
   const isCalendarPage = pathname === '/calendar';
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className={`${menuOpen ? 'header-menu-open' : ''} ${isCalendarPage ? 'header-yellow' : ''}`}>
+    <header className={`${menuOpen ? 'header-menu-open' : ''} ${isCalendarPage ? 'header-yellow' : ''} ${scrolled ? 'header-scrolled' : ''}`}>
       <nav className="navbar">
         <div className="nav-left">
           {/* Minimalist Burger Button with Kinetic Text Roll */}
